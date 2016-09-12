@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  cantidad: 1.5
+  calorias: 1.5
+  codigo: MyString
+  porciones: false
+
+two:
+  nombre: MyString
+  cantidad: 1.5
+  calorias: 1.5
+  codigo: MyString
+  porciones: false

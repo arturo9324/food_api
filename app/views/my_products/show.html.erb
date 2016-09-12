@@ -1,0 +1,23 @@
+<div class="container center">
+	<h1><%= @product.nombre %> - <%= link_to "Editar", edit_product_path(@product) %></h1>
+	<!--Mostrar Marca -->
+	<div class="field">
+		<%= image_tag @product.image.url(:web) %>
+	</div>
+	<p>
+		<h3>Cantidad: </h3>
+		<%= @product.cantidad%>
+	</p>
+	<p>
+		<h3>Calorías: </h3>
+		<%= @product.calorias %>
+	</p>
+	<p>
+		<h3>Codigo: </h3>
+		<%= @product.codigo %>
+	</p>
+	<% if @product.porciones == true %>
+	mostrar porciones
+	<% end %>
+</div>
+<%= render "has_nutrient/form" %>
