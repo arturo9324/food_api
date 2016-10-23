@@ -4,7 +4,7 @@ class MyProductsController < ApplicationController
 
 	#GET /products
 	def index
-		@products = Product.all
+		@products = Product.paginate(page: params[:page],per_page: 10).ultimos
 		#obtener unicamente aquellos que haya creado la empresa
 	end
 

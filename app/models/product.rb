@@ -18,4 +18,6 @@ class Product < ApplicationRecord
 		has = HasNutrient.where("product_id = ? AND nutrient_id = ?", self.id, nutrient_id).take
 		has.cantidad
 	end
+
+	scope :ultimos, ->{ order("created_at DESC") }
 end

@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FoodApi</title>
-    <%= csrf_meta_tags %>
-    <style>@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,700';</style>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>FoodApi</title>
+  <%= csrf_meta_tags %>
+  <style>@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,700';</style>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  	<%= render "/partials/navigation" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+<body>
+  <div class="container">
+    <div class="header">
+      <%= render "/partials/navigation" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <div class="body">
+      <%= yield %>
+    </div>
+    <div class="footer top-space">
+      <div class="footer-container">
+        <p class="text-muted">Desarrollado por el Centro Nacional de Investigación y Desarrolo Tecnológico</p>
+      </div>
+      </div>
+  </div>
+</body>
 </html>

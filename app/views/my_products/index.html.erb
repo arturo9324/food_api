@@ -1,11 +1,14 @@
 <% @products.each do |product| %>
-	<div class="container">
-  		<div class="card big-padding">
-  			<h1> <%= link_to product.nombre, product, method: :get %></h1>
-  			<!-- imagen-->
-  			<p>
-  				<%= image_tag product.image.url(:mobile) %>
-  			</p>
-  		</div>
-  	</div>
+<div class="container">
+	<div class="card big-padding">
+		<h1> <%= link_to product.nombre, product, method: :get %></h1>
+		<!-- imagen-->
+		<p>
+			<%= image_tag product.image.url(:mobile) %>
+		</p>
+	</div>
+</div>
 <% end %>
+<div class="top-space">
+	<%= will_paginate @products %>
+</div>

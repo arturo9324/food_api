@@ -38,6 +38,7 @@ gem 'valid_email'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'certified'
+gem 'will_paginate'
 gem 'paperclip'
 
 group :development, :test do
