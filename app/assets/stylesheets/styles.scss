@@ -31,8 +31,46 @@ body {
 	text-align: center;
 }
 
+.notice,
+.alert {
+margin: 10px 0px;
+padding:12px;
+}
+
+.notice i, 
+.alert i{
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}
+
+.notice {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.alert,
+#error_explanation {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+#error_explanation {
+	padding-left: 1em;
+}
+
+#error_explanation h2{
+	font-size: 2em;
+	font-style: bold;
+}
+
 nav{
 	background-color: #ef6c00;
+}
+
+.form{
+	width:80%;
+	margin:0 auto;
 }
 
 .side-nav li{
@@ -47,12 +85,24 @@ label{
 	padding: 20px
 }
 
+.margin{
+	margin-left: 6em;
+}
+
 .be-blue{
 	background-color: #0099ff;
 }
 
 .be-red{
 	background-color: #E74C3C;
+}
+
+.be-icon-red{
+	color: #FF5252;
+}
+
+.be-icon-green{
+	color: #4CAF50;
 }
 
 .be-green{
@@ -84,6 +134,53 @@ label{
 	width: 50%;
 	height: auto;
 }
+
+.previous_page,
+.pagination a,
+.next_page{
+	padding: 10px 15px;
+    background: #f57c00;
+    color: #000;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+.pagination a:hover, .pagination a:focus{
+	background: #ef6c00;
+	border: solid 1px #2A4E77;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.current{
+	padding: 10px 15px;
+    background: #ffa726;
+    color: #000;
+    font-style: normal;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.disabled{
+	background: #ffcc80 ;
+	color: #000;
+}
+
 
 /*
 header nav ul li{

@@ -33,17 +33,23 @@ gem 'sdoc', '~>0.4.0'
 gem 'rails-controller-testing'
 
 gem 'rspec', '~>3.0'
+gem 'foundation-icons-sass-rails', '~> 3.0'
 
 gem 'valid_email'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'certified'
+gem 'devise'
 gem 'will_paginate'
 gem 'paperclip'
+gem 'dotenv-rails'
+gem 'sweetalert-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'letter_opener'
+  gem 'minitest'
 end
 
 group :development do

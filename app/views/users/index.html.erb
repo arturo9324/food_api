@@ -1,0 +1,19 @@
+<div class="card form big-padding">
+	<h1>Usuarios</h1>
+	<table class="striped centered">
+		<thead>
+			<tr>
+				<th data-field="name">Correo</th>
+				<th data-field="type">¿Admin?</th>
+				<th data-field="delete">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @user %>
+		</tbody>
+	</table>
+</div>
+
+<div class="top-space center">
+	<%= will_paginate @user %>
+</div>

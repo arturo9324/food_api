@@ -1,0 +1,16 @@
+<tr>
+	<td><%= truncate(user.email, length: 20)%></td>
+	<td>
+		<% if user.admin? %>
+		<i class="fi-check be-icon-green"></i>
+		<% else %>
+		<i class="fi-x be-icon-red"></i>
+		<% end %>
+	</td>
+	<td>
+		<% unless @c_user == user %>
+		<%= link_to "<i class='fi-trash be-icon-red'></i>".html_safe, user_destroy_path(user), method: :delete %>
+		
+		<% end %>
+	</td>
+</tr>

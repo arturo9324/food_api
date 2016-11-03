@@ -12,7 +12,9 @@ class Product < ApplicationRecord
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	has_many :has_nutrients
-	has_many :nutrients, through: :has_nutrients 
+	has_many :nutrients, through: :has_nutrients
+
+	belongs_to :user 
  
 	def get_nutrient(nutrient_id)
 		has = HasNutrient.where("product_id = ? AND nutrient_id = ?", self.id, nutrient_id).take

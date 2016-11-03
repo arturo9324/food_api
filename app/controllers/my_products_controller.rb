@@ -1,7 +1,8 @@
 class MyProductsController < ApplicationController
 
 	before_action :set_product, except: [:index, :new, :create]
-
+	before_action :authenticate_user!
+	before_action :is_not_admin?
 	#GET /products
 	def index
 		@products = Product.paginate(page: params[:page],per_page: 10).ultimos

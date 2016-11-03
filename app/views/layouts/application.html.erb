@@ -12,8 +12,12 @@
   <div class="container">
     <div class="header">
       <%= render "/partials/navigation" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if not notice.nil? %>
+      <div class="notice"><i class="material-icons dp48" style="color: #4F8A10;">done</i><%= notice %></div>
+      <% end %>
+      <% if not alert.nil? %>
+      <div class="alert"><i class="material-icons dp48">report_problem</i><%= alert %></div>
+      <% end %>
     </div>
     <div class="body">
       <%= yield %>

@@ -1,0 +1,36 @@
+<div class="card big-padding form">
+  <h1>Registra un nuevo usuario</h1>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="input-field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="input-field">
+    <%= f.label :password, "Contraseña" %>
+    <%= f.password_field :password, autocomplete: "off" %><br />
+    <% if @minimum_password_length %>
+    <em>(Caracteres minimos: <%= @minimum_password_length %>)</em>
+    <% end %>
+  </div>
+
+  <div class="input-field">
+    <%= f.label :password_confirmation, "Confirma tu contraseña" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <input type="checkbox" name="user[admin]" id="user_admin" value="1">
+    <label for="user_admin">¿Usuario Administrador?</label>
+
+  </div>
+
+  <div class="action top-space center">
+    <%= f.submit "Registrar", class: "btn"%>
+  </div>
+  <% end %>
+</div>
+

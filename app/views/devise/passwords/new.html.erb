@@ -1,0 +1,19 @@
+<div class="card form big-padding">	
+	<h2>¿Olvidaste tu contraseña?</h2>
+
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	<%= devise_error_messages! %>
+
+	<div class="input-field">
+		<%= f.label :email %><br />
+		<%= f.email_field :email, autofocus: true %>
+	</div>
+
+	<div class="action center">
+		<%= f.submit "Enviar correo para restablecer contraseña", class: 'btn' %>
+	</div>
+	<% end %>
+</div>
+<div class="center top-space">
+	<%= render "devise/shared/links" %>
+</div>

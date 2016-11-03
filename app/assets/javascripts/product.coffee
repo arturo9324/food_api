@@ -34,3 +34,6 @@ $(document).on "click", "input#product_porciones_0",(ev)->
   $("#porciones_num").addClass("hide")
   $("#product_porciones_num").prop('required', false)
   return true
+
+$(window).load ->
+  $("#error_explanation").prepend("<i class='material-icons dp4'>report_problem</i>")

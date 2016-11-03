@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<h1>Bienvenido al sistema de registro de alimentos </h1>
+
+	<p>Este correo es para informarle que se ha creado un usuario con su correo electrónico dentro el sistema de registro de alimentos.</p>
+	<p>
+		Para iniciar sesión <%= link_to "aqui", user_session_url %>,  utilize este correo y la contraseña: <%= @password %>
+	</p>
+	<p style='color: red'>
+		Le sugerimos Cambiar su contraseña lo antes posible.
+	</p>
+	<p>
+		¡Esperamos su pronta visita!
+	</p>
+</body>
+</html>
