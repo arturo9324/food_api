@@ -40,8 +40,10 @@ class MyProductsController < ApplicationController
 		redirect_to @product, notice: "Falta lógica actualización"
 	end
 
-	#DELETE /products/:idd
+	#DELETE /products/:id
 	def destroy
+		@product.destroy
+		redirect_to products_path, notice: "El producto se ha eliminado"
 	end
 
 	private
@@ -56,9 +58,13 @@ class MyProductsController < ApplicationController
 		end
 		return 0
 	end
-	 def set_product
+	def set_product
 		if (Product.exists?(params[:id]))
-			@product = Product.find(params[:id])
+			if @c_user == Product.find(params[:id]).user
+				@product = Product.find(params[:id])
+			else
+				redirect_to products_path, alert: "No tienes permiso para acceder a este producto"
+			end
 		else
 			error_resource_product
 		end
