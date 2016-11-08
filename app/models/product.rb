@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 	validates_attachment_presence :image
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-	has_many :has_nutrients
+	has_many :has_nutrients, dependent: :destroy
 	has_many :nutrients, through: :has_nutrients
 
 	belongs_to :user 

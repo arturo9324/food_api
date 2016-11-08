@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :products
+  has_many :products, dependent: :destroy
 
   scope :admin, -> {order ("admin ASC")}
 

@@ -5,7 +5,7 @@ class MyProductsController < ApplicationController
 	before_action :is_not_admin?
 	#GET /products
 	def index
-		@products = Product.paginate(page: params[:page],per_page: 10).ultimos
+		@products = @c_user.products.paginate(page: params[:page],per_page: 10).ultimos
 		#obtener unicamente aquellos que haya creado la empresa
 	end
 
@@ -23,7 +23,7 @@ class MyProductsController < ApplicationController
 	#POST /products
 	def create
 		#raise params.to_yaml
-		@product = Product.new(product_params)
+		@product = @c_user.products.new(product_params)
 		if @product.save
 			redirect_to @product
 		else

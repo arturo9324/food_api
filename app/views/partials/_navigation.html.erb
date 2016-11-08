@@ -2,7 +2,7 @@
 <% if current_user.admin? %>
 <ul id='dropdown_user' class='dropdown-content'>
 	<li><%= link_to "Nuevo usuarios", new_user_registration_path %></li>
-	<li><%= link_to "Lista de usarios", products_path %> </li>
+	<li><%= link_to "Lista de usarios", user_index_path %> </li>
 </ul>
 <% else %>
 <ul id='dropdown_product' class='dropdown-content'>
@@ -45,7 +45,7 @@
 						<div class="collapsible-body">
 							<ul>
 								<li><%= link_to "Nuevo usuarios", new_user_registration_path %></li>
-								<li><%= link_to "Lista de usarios", products_path %> </li>
+								<li><%= link_to "Lista de usarios", user_index_path %> </li>
 							</ul>
 						</div>
 					</li>

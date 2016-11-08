@@ -4,6 +4,8 @@ class UsersController < Devise::RegistrationsController
 	skip_before_action :require_no_authentication
 	before_action :authenticate_user
 	before_action :authenticate_admin!, except: [:edit, :update]
+	before_action :set_user, only: [:destroy]
+	before_action :be_owner, only: [:destroy]
 	def index
 		@user = User.paginate(page: params[:page], per_page: 10).all.admin
 	end
@@ -37,7 +39,8 @@ class UsersController < Devise::RegistrationsController
 	end
 
 	def destroy
-		redirect_to root_path, notice: "se ha enviado a eliminar pero no se ha eliminado"
+		@d_user.destroy
+		redirect_to user_index_path, notice: "Se ha eliminado corretcamente"
 	end
 
 	def cancel
@@ -56,6 +59,19 @@ class UsersController < Devise::RegistrationsController
 
 	def create_user_params
 		params.require(:user).permit(:email,:password, :password_confirmation)
+	end
+
+	def set_user
+		@d_user = User.find_by_id(params[:id_user])
+		if @d_user.nil?
+			redirect_to user_index_path, alert: "El usario no existe"
+		end
+	end
+
+	def be_owner
+		if @d_user.id == current_user.id
+			redirect_to user_index_path, alert: "Tu cuenta no puede ser eliminada"
+		end
 	end
 
 	
