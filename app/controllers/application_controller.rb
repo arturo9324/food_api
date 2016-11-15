@@ -12,16 +12,20 @@ class ApplicationController < ActionController::Base
   end
 
   def is_not_admin?
-    redirect_to root_path, alert: "No estas autorizado para realizar esta acción" if current_user.admin?
+    redirect_to root_path, alert: "No estas autorizado para realizar esta acción" if @c_user.admin?
   end
 
-  protected
+  def authenticate_user
+    redirect_to(new_user_session_path, alert: "Tienes que iniciar sesión") unless user_signed_in?
+  end
 
   def login?
     if user_signed_in?
       @c_user = current_user
     end
   end
+
+  protected
 
 	def error_array(arreglo, status)
 		@errors = @errors + arreglo

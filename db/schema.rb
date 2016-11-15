@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025180359) do
+ActiveRecord::Schema.define(version: 20161111142157) do
+
+  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.string   "direccion"
+    t.string   "telefono"
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
+  end
 
   create_table "has_nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "product_id"
@@ -42,9 +52,9 @@ ActiveRecord::Schema.define(version: 20161025180359) do
     t.float    "cantidad",           limit: 24
     t.float    "calorias",           limit: 24
     t.string   "codigo"
-    t.boolean  "porciones"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "porciones",                     default: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -71,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161025180359) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "companies", "users"
   add_foreign_key "has_nutrients", "nutrients"
   add_foreign_key "has_nutrients", "products"
   add_foreign_key "nutrients", "measures"

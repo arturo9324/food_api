@@ -17,7 +17,13 @@
 		<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 		<ul id="slide-out" class="side-nav">
 			<% if user_signed_in? %>
-			<li class="no-padding"><%= link_to "Cambiar contraseña", edit_user_registration_path %></li>
+			<li class="no-padding">
+				<% if @c_user.admin? %>
+				<%= link_to "Cambiar contraseña", edit_user_registration_path %>
+				<%else%>
+				<%= link_to "Editar cuenta", edit_user_registration_path %>
+				<%end%>
+				</li>
 			<li class="no-padding"><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></li>
 			<% else %>
 			<li class="no-padding"><%= link_to "Iniciar sesión", new_user_session_path %></li>
@@ -63,7 +69,13 @@
 				<% end %>
 			<% end %>
 			<% if user_signed_in? %>
-			<li class="no-padding"><%= link_to "Cambiar contraseña", edit_user_registration_path %></li>
+			<li class="no-padding">
+				<% if @c_user.admin? %>
+				<%= link_to "Cambiar contraseña", edit_user_registration_path %>
+				<%else%>
+				<%= link_to "Editar cuenta", edit_user_registration_path %>
+				<%end%>
+			</li>
 			<li class="no-padding"><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></li>
 			<% else %>
 			<li class="no-padding"><%= link_to "Iniciar sesión", new_user_session_path %></li>

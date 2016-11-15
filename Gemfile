@@ -44,12 +44,17 @@ gem 'will_paginate'
 gem 'paperclip'
 gem 'dotenv-rails'
 gem 'sweetalert-rails'
+gem 'phony_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'letter_opener'
   gem 'minitest'
+  gem 'shoulda-matchers', '~>2.5.0'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara'
 end
 
 group :development do

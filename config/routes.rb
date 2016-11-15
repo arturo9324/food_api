@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get "/users" => "users#index", :as => :user_index
     delete "/users/:id_user" => "users#destroy", :as => :user_destroy
   end
+
+  resources :companies, only: [:create,:update]
+
   namespace :api, defaults: { format: "json" } do
   	namespace :v1 do
   		resources :products, controller: "products", only: [:show]

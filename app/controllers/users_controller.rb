@@ -6,6 +6,7 @@ class UsersController < Devise::RegistrationsController
 	before_action :authenticate_admin!, except: [:edit, :update]
 	before_action :set_user, only: [:destroy]
 	before_action :be_owner, only: [:destroy]
+	before_action :set_company, only: [:edit]
 	def index
 		@user = User.paginate(page: params[:page], per_page: 10).all.admin
 	end
@@ -49,12 +50,19 @@ class UsersController < Devise::RegistrationsController
 	
 	private 
 
-	def authenticate_user
-		redirect_to(new_user_session_path, alert: "Tienes que iniciar sesión") unless user_signed_in?
+	def set_company
+		company = User.find(@c_user.id).company
+		if  @comapany.nil?
+			if company.nil?
+				@company = Company.new
+			else
+				@company = company
+			end
+		end
 	end
 
 	def authenticate_admin!
-		redirect_to root_path, alert: "Solo administradores" unless current_user.admin
+		redirect_to root_path, alert: "Solo administradores" unless @c_user.admin
 	end
 
 	def create_user_params
