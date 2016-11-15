@@ -9,6 +9,14 @@
 	<li><%= link_to "Nuevo producto", new_product_path %></li>
 	<li><%= link_to "Lista de productos", products_path %> </li>
 </ul>
+<ul id='dropdown_session' class='dropdown-content'>
+	<% if @c_user.company.nil? or @c_user.company.id.nil?%>
+		<li><%= link_to "Editar datos compañía", new_company_path %></li>
+	<% else %>
+		<li><%= link_to "Editar datos compañía", edit_company_path(current_user.company) %></li>
+	<% end %>
+	<li><%= link_to "Cambiar contraseña", edit_user_registration_path %> </li>
+</ul>
 <% end %>
 <% end %> 
 <nav>
@@ -19,9 +27,23 @@
 			<% if user_signed_in? %>
 			<li class="no-padding">
 				<% if @c_user.admin? %>
-				<%= link_to "Cambiar contraseña", edit_user_registration_path %>
+					<%= link_to "Cambiar contraseña", edit_user_registration_path %>
 				<%else%>
-				<%= link_to "Editar cuenta", edit_user_registration_path %>
+					<ul class="collapsible collapsible-accordion">
+						<li>
+						<a class="collapsible-header">Editar cuenta<i class="material-icons">arrow_drop_down</i></a>
+							<div class="collapsible-body">
+								<ul>
+									<% if @c_user.company.nil? or @c_user.company.id.nil? %>
+										<li><%= link_to "Editar datos compañía", new_company_path %></li>
+									<% else %>
+										<li><%= link_to "Editar datos compañía", edit_company_path(current_user.company) %></li>
+									<% end %>
+									<li><%= link_to "Cambiar contraseña", edit_user_registration_path %> </li>
+								</ul>
+							</div>
+						</li>
+					</ul>
 				<%end%>
 				</li>
 			<li class="no-padding"><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></li>
@@ -71,10 +93,10 @@
 			<% if user_signed_in? %>
 			<li class="no-padding">
 				<% if @c_user.admin? %>
-				<%= link_to "Cambiar contraseña", edit_user_registration_path %>
-				<%else%>
-				<%= link_to "Editar cuenta", edit_user_registration_path %>
-				<%end%>
+					<%= link_to "Cambiar contraseña", edit_user_registration_path %>
+				<% else %>
+					<a class="dropdown-button" href="#!" data-activates="dropdown_session">Editar cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+				<% end %>
 			</li>
 			<li class="no-padding"><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></li>
 			<% else %>

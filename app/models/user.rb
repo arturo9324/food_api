@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :products, dependent: :destroy
-  has_one :company, -> { where( User.find(:id).admin false ) }, dependent: :destroy
+  has_one :company, dependent: :destroy
   scope :admin, -> {order ("admin ASC")}
 
   def be_admin

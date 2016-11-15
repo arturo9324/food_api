@@ -1,14 +1,25 @@
 class CompaniesController < ApplicationController
 	before_action :authenticate_user
 	before_action :validates_company
+	before_action :set_company, only: [:edit, :update]
+
+	def new
+		if @c_user.company.nil?
+			@company = Company.new
+		else
+			@company = @c_user.company
+		end
+	end
+
+	def edit
+	end
 
 	def create
-		@company = Company.new(company_params)
+		@company = @c_user.build_company(company_params)
 		if @company.save
 			rendirect_to root_path, notice: "Infomración actualizada correctamente"
 		else
-			erros = @company.errors.full_messages
-			redirect_to edit_user_registration_path(@company), :flash => { :error =>  erros}, alert: "No se pudo realizar el registro."
+			render :new
 		end
 	end
 
@@ -27,8 +38,12 @@ class CompaniesController < ApplicationController
 	def set_company
 		if Company.exists?(params[:id])
 			@company = Company.find(params[:id])
+			unless @c_user.company == @company
+				redirect_to root_path, alert: "No tienes permiso de acceder a esta página"
+			end
 		else
-			redirect_to user_index_path, notice: "No se puede actualizar"
+			@company = Company.new
+			render :new
 		end
 	end
 

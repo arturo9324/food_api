@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     delete "/users/:id_user" => "users#destroy", :as => :user_destroy
   end
 
-  resources :companies, only: [:create,:update]
+  resources :companies, only: [:new, :edit, :create,:update]
 
   namespace :api, defaults: { format: "json" } do
   	namespace :v1 do
