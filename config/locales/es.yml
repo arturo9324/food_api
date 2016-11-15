@@ -1,0 +1,9 @@
+es:
+  activerecord:
+    errors:
+      models:
+        company:
+          attributes:
+            telefono:
+              blank: "Debes introducir un telefono válido"
+              improbable_phone: "El teléfono es inválido"
