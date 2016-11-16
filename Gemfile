@@ -45,6 +45,7 @@ gem 'paperclip'
 gem 'dotenv-rails'
 gem 'sweetalert-rails'
 gem 'phony_rails'
+gem 'dynamic_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

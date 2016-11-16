@@ -1,28 +1,7 @@
 
-<% if @c_user.admin? %>
 <div class="card big-padding form">
   <%= render "form" %>
 </div>
-<% else %>
-<div class="card big-padding form">
-  <div class="input">
-    <p>
-      <input type="radio" class="with-gap" id="passwordField" name="group1" value="password">
-      <label for="passwordField">Editar Contraseña</label>
-    </p>
-    <p>
-      <input type="radio" class="with-gap" name="group1" value="company" id="company" >
-      <label for="company">Editar datos compañia</label>
-    </p>
-  </div>
-  <div class="hidden" id="password_fields">
-    <%= render "/devise/registrations/form" %>
-  </div>
-  <div class="hidden" id="company_fields">
-    <%= render "/company/form" %>
-  </div>
-</div>
-<% end %>
 <div class="center top-space">
   <%= link_to "Atras", :back%>
 </div>
