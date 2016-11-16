@@ -41,7 +41,7 @@ class UsersController < Devise::RegistrationsController
 
 	def destroy
 		@d_user.destroy
-		redirect_to user_index_path, notice: "Se ha eliminado corretcamente"
+		redirect_to user_index_path, notice: "Se ha eliminado correctamente"
 	end
 
 	def cancel
@@ -72,7 +72,7 @@ class UsersController < Devise::RegistrationsController
 	def set_user
 		@d_user = User.find_by_id(params[:id_user])
 		if @d_user.nil?
-			redirect_to user_index_path, alert: "El usario no existe"
+			redirect_to user_index_path, alert: "El usuario no existe"
 		end
 	end
 
