@@ -1,17 +1,16 @@
 
 <%= form_for([@product,@has_nutrient]) do |f| %>
-	<% if @has_nutrient.errors.any? %>
-		<div id="error_explanation">
-			<h2>
-				<%= pluralize(@has_nutrient.errors.count, "error") %> prhohibited this @has_nutrient from being saved:
-			</h2>
-			<ul>
-				<% @has_nutrient.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-				<% end %>	
-			</ul>
-		</div>
-	<% end %>
+	<% if @product.errors.any? %>
+	<div class="alert">
+		<ul type = "circle">
+			<li><i class="material-icons small">report_problem</i>
+			<strong>Error al realizar la operación:</strong></li>
+			<% @product.errors.full_messages.each do |message| %>
+				<li><i class="material-icons tiny">error</i><%= message %></li>
+			<%end%>
+		</ul>
+	</div>
+<% end %>
 	<div class="container">	
 		<div class="card big-padding">	
 			<h2>Nutrientes</h2>

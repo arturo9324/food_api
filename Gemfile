@@ -54,8 +54,10 @@ group :development, :test do
   gem 'minitest'
   gem 'shoulda-matchers', '~>2.5.0'
   gem 'rspec-rails'
+  gem 'rspec_boolean'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do

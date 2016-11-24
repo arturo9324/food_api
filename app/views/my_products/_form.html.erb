@@ -1,8 +1,14 @@
 <%= form_for(@product) do |f|  %>
-<% @product.errors.full_messages.each do |message| %>
-<div class="alert">
-	<%= message %>
-</div>
+<% if @product.errors.any? %>
+	<div class="alert">
+		<ul type = "circle">
+			<li><i class="material-icons small">report_problem</i>
+			<strong>Error al realizar la operación:</strong></li>
+			<% @product.errors.full_messages.each do |message| %>
+				<li><i class="material-icons tiny">error</i><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
 <div class="input-field">
 	<%= f.label :nombre %>

@@ -11,7 +11,7 @@ class Api::V1::ProductsController < Api::V1::MasterApiController
 		if not (Product.where("codigo = ?", params[:id]).take.nil?)
 			@product = Product.where("codigo = ?",params[:id]).take
 		else
-			error!("El producto buscado no existe", :unprocesable_entity)
+			error!("El producto buscado no existe", :unprocessable_entity)
 		end
 	end
 
