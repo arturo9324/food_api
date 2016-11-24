@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   resources :products, controller: "my_products" do
   	resources :has_nutrients, only: [:create]
   end
+
+  namespace :api, defaults: { format: "json" } do
+    namespace :v1 do
+      resources :products, controller: "products", only: [:show]
+      resources :app_users, controller: "app_users", only: [:create, :update]
+    end
+  end
+  
   devise_for :users, :controllers => { :registrations => "users"}
   as :user do
     get "/users" => "users#index", :as => :user_index
