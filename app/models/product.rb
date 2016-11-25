@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 	validates :nombre, presence: true, uniqueness: true
 	validates :cantidad, presence: true
 	validates :calorias, presence: true
-	validates :codigo, presence: true, uniqueness: true
+	validates :codigo, presence: true, uniqueness: true, length: { minimum: 10, maximum: 10 }
 	validates_inclusion_of :porciones, :in => [true, false]
 
 	has_attached_file :image, styles: { web: "600x400", mobile: "300x200" }

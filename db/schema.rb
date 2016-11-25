@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161123195731) do
+=======
+ActiveRecord::Schema.define(version: 20161125144102) do
+>>>>>>> 34854c68899985a9e68582cee0d9201d3ac60f1f
 
   create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
@@ -87,11 +91,20 @@ ActiveRecord::Schema.define(version: 20161123195731) do
   end
 
   create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+<<<<<<< HEAD
     t.date     "expires_at"
     t.integer  "app_users_id"
     t.string   "token"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+=======
+    t.datetime "expires_at"
+    t.integer  "app_user_id"
+    t.string   "token"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["app_user_id"], name: "index_tokens_on_app_user_id", using: :btree
+>>>>>>> 34854c68899985a9e68582cee0d9201d3ac60f1f
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -117,4 +130,5 @@ ActiveRecord::Schema.define(version: 20161123195731) do
   add_foreign_key "has_nutrients", "products"
   add_foreign_key "nutrients", "measures"
   add_foreign_key "products", "users"
+  add_foreign_key "tokens", "app_users"
 end

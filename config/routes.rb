@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       resources :app_users, controller: "app_users", only: [:create, :update]
     end
   end
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 34854c68899985a9e68582cee0d9201d3ac60f1f
   devise_for :users, :controllers => { :registrations => "users"}
   as :user do
     get "/users" => "users#index", :as => :user_index
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: "json" } do
   	namespace :v1 do
   		resources :products, controller: "products", only: [:show]
+      resources :app_users, olny: [:create]
   	end
   end
   

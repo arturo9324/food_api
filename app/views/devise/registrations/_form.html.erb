@@ -1,6 +1,17 @@
 <h2>Actualizar contraseña</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-<%= devise_error_messages! %>
+
+<% if resource.errors.any? %>
+  <div class="alert">
+    <ul type = "circle">
+      <li><i class="material-icons small">report_problem</i>
+      <strong>Error al realizar la operación:</strong></li>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><i class="material-icons tiny">error</i><%= message %></li>
+      <%end%>
+    </ul>
+  </div>
+<% end %>
 
 <div class="input-field">
   <%= f.label :password, "Nueva contraseña" %><br />
