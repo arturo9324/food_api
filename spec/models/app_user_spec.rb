@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe AppUser, type: :model do
+
 	it { should validate_presence_of(:email) }
-	it { should validate_uniqueness_of(:email) }
 
 	it "should create a new user if the uid and provider don't exist" do
 		expect{

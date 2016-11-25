@@ -4,6 +4,9 @@ json.attributes resource.attributes
 if resource.class.name.underscore.pluralize == "products"
 	json.imageURL resource.image.url(:mobile)
 end
+if resource.class.name.underscore.pluralize == "app_users"
+	json.token resource.tokens.last
+end
 if defined? relations
 	json.relations do
 		relations.each do |relation|

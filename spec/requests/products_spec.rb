@@ -4,7 +4,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 	
 	describe "GET /api/v1/products/:id" do
 
-		context "with valid code" do
+		context "with valid code and token" do
 			before :each do
 				@product = FactoryGirl.create(:product, codigo: "1234567890")
 				for i in 0..5
