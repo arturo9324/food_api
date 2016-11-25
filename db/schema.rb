@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111142157) do
+ActiveRecord::Schema.define(version: 20161123195731) do
+
+  create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
@@ -30,6 +39,20 @@ ActiveRecord::Schema.define(version: 20161111142157) do
     t.datetime "updated_at",             null: false
     t.index ["nutrient_id"], name: "index_has_nutrients_on_nutrient_id", using: :btree
     t.index ["product_id"], name: "index_has_nutrients_on_product_id", using: :btree
+  end
+
+  create_table "info_app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "app_users_id"
+    t.date     "fecha_nacimiento"
+    t.float    "peso",             limit: 24
+    t.float    "estatura",         limit: 24
+    t.boolean  "sexo"
+    t.float    "max_calorias",     limit: 24
+    t.float    "min_calorias",     limit: 24
+    t.boolean  "embarazo"
+    t.boolean  "lactancia"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -61,6 +84,14 @@ ActiveRecord::Schema.define(version: 20161111142157) do
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
+  end
+
+  create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.date     "expires_at"
+    t.integer  "app_users_id"
+    t.string   "token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
