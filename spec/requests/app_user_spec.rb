@@ -32,7 +32,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 		context "With a created user" do
 			before :each do
 				@app_user = FactoryGirl.create(:app_user)
-				@token = FactoryGirl.create(:token, app_user: @app_user, expires_at: DateTime.now+10.minutes)
+				@token = FactoryGirl.create(:token, app_user: @app_user, expires_at: 1.hour.from_now)
 				@token_value = @token.token
 				@auth =  {uid: @app_user.uid, provider: @app_user.uid, email: @app_user.email, name: @app_user.name}
 				post api_v1_app_users_path, params: { auth: @auth }
@@ -51,7 +51,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 
 			it "should respond with the same token" do
 				json = JSON.parse(response.body)
-				expect(json['data']['token']).to eq(@token_value)
+				expect(json['data']['token']['token']).to eq(@token_value)
 
 			end
 		end
@@ -59,7 +59,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 		context "with a created user and a invalid token" do
 			before :each do
 				@app_user = FactoryGirl.create(:app_user)
-				@token = FactoryGirl.create(:token, app_user: @app_user)
+				@token = FactoryGirl.create(:token, app_user: @app_user, expires_at: 1.second.from_now)
 				@token_value = @token.token
 				@auth =  {uid: @app_user.uid, provider: @app_user.uid, email: @app_user.email, name: @app_user.name}
 				post api_v1_app_users_path, params: { auth: @auth }
@@ -75,7 +75,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 
 			it "should respond with diferent token" do
 				json = JSON.parse(response.body)
-				expect(json['data']['token']).to_not eq(@token_value)
+				expect(json['data']['token']['token']).to_not eq(@token_value)
 			end
 		end
 	end

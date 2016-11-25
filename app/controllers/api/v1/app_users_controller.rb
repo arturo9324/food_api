@@ -9,7 +9,7 @@ class Api::V1::AppUsersController < Api::V1::MasterApiController
 				if @user.tokens.last.is_valid?
 					@token = @user.tokens.create
 				else
-					@token = @user.token.last
+					@token = @user.tokens.last
 				end
 			else
 				@token = @user.tokens.create
