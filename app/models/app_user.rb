@@ -13,5 +13,4 @@ class AppUser < ApplicationRecord
 			user.name =data[:name]
 		end
 	end
-
 end

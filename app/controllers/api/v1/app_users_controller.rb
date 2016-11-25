@@ -21,7 +21,6 @@ class Api::V1::AppUsersController < Api::V1::MasterApiController
 			render "api/v1/app_users/show"
 		end
 	end
-
 	private
 
 	def app_users_params
