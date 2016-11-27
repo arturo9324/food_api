@@ -8,9 +8,9 @@ class Api::V1::AppUsersController < Api::V1::MasterApiController
 			if @user.persisted?
 				if @user.tokens.any?
 					if @user.tokens.last.is_valid?
-						@token = @user.tokens.create
-					else
 						@token = @user.tokens.last
+					else
+						@token = @user.tokens.create
 					end
 				else
 					@token = @user.tokens.create

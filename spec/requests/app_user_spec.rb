@@ -59,7 +59,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 		context "with a created user and a invalid token" do
 			before :each do
 				@app_user = FactoryGirl.create(:app_user)
-				@token = FactoryGirl.create(:token, app_user: @app_user, expires_at: 1.second.from_now)
+				@token = FactoryGirl.create(:token, app_user: @app_user, expires_at: -1.second.from_now)
 				@token_value = @token.token
 				@auth =  {uid: @app_user.uid, provider: @app_user.uid, email: @app_user.email, name: @app_user.name}
 				post api_v1_app_users_path, params: { auth: @auth }

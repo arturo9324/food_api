@@ -8,7 +8,7 @@ class CreateInfoAppUsers < ActiveRecord::Migration[5.0]
       t.boolean :sexo
       t.float :max_calorias
       t.float :min_calorias
-      t.booelan :embarazo
+      t.boolean :embarazo
       t.boolean :lactancia
 
       t.timestamps

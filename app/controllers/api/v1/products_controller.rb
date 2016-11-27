@@ -1,6 +1,6 @@
 class Api::V1::ProductsController < Api::V1::MasterApiController
-	before_action :set_errors
 	before_action :set_product
+	before_action :authenticate_user
 	#GET /api/v1/products/:id
 	def show
 	end
