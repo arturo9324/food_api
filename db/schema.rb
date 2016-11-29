@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125182017) do
+ActiveRecord::Schema.define(version: 20161127230354) do
 
   create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(version: 20161125182017) do
     t.index ["measure_id"], name: "index_nutrients_on_measure_id", using: :btree
   end
 
+  create_table "portions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "product_id"
+    t.integer  "measure_id"
+    t.integer  "porcion"
+    t.float    "cantidad",     limit: 24
+    t.string   "equivalencia"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["measure_id"], name: "index_portions_on_measure_id", using: :btree
+    t.index ["product_id"], name: "index_portions_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "nombre"
     t.float    "cantidad",           limit: 24
@@ -84,6 +96,8 @@ ActiveRecord::Schema.define(version: 20161125182017) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
+    t.integer  "measure_id"
+    t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
@@ -119,6 +133,9 @@ ActiveRecord::Schema.define(version: 20161125182017) do
   add_foreign_key "has_nutrients", "products"
   add_foreign_key "info_app_users", "app_users"
   add_foreign_key "nutrients", "measures"
+  add_foreign_key "portions", "measures"
+  add_foreign_key "portions", "products"
+  add_foreign_key "products", "measures"
   add_foreign_key "products", "users"
   add_foreign_key "tokens", "app_users"
 end

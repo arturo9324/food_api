@@ -1,4 +1,5 @@
 class Measure < ApplicationRecord
+	has_many :products
 	validates :nombre, presence: true
-	validates :abrebicacion, presence: true
+	validates :abrebiacion, presence: true
 end

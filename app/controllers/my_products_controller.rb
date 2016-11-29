@@ -3,6 +3,7 @@ class MyProductsController < ApplicationController
 	before_action :set_product, except: [:index, :new, :create]
 	before_action :authenticate_user!
 	before_action :is_not_admin?
+	before_action :set_measure, only: [:create, :update]
 	#GET /products
 	def index
 		@products = @c_user.products.paginate(page: params[:page],per_page: 10).ultimos
@@ -24,6 +25,7 @@ class MyProductsController < ApplicationController
 	def create
 		#raise params.to_yaml
 		@product = @c_user.products.new(product_params)
+		@product.measure = @measure
 		if @product.save
 			redirect_to @product
 		else
@@ -58,6 +60,19 @@ class MyProductsController < ApplicationController
 		end
 		return 0
 	end
+
+	def set_measure
+		if params[:product].has_key?(:measure)
+			if Measure.exists?(params[:product][:measure])
+				@measure = Measure.find(params[:product][:measure])
+			else
+				@measure = nil
+			end
+		else@measure = nil
+		end
+		
+	end
+
 	def set_product
 		if (Product.exists?(params[:id]))
 			if @c_user == Product.find(params[:id]).user

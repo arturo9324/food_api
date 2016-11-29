@@ -37,3 +37,7 @@ $(document).on "click", "input#product_porciones_0",(ev)->
 
 $(window).load ->
   $("#error_explanation").prepend("<i class='material-icons dp4'>report_problem</i>")
+
+$(document).ready ->
+  $('select').material_select()
+  return
