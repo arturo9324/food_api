@@ -2,7 +2,7 @@ class AppUser < ApplicationRecord
 
 	has_many :tokens
 
-	validates :email, presence: true, email: true
+	validates :email, presence: true, email: true, uniqueness: true
 	validates :name, presence: true
 	validates :uid,presence:true
 	validates :provider, presence: true

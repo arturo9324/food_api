@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-Rspec. describe Measure, type: :model do
+RSpec. describe Measure, type: :model do
 
-	it { should validate_precence_of(:nombre) }
-	it { should validate_precence_of(:abrebiacion) }
+	it { should validate_presence_of(:nombre) }
+	it { should validate_presence_of(:abrebiacion) }
 	
 end
