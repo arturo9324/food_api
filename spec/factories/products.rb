@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :product do
-  	association :user, factory: :user 
+  	association :user, factory: :user
+  	association :measure, factory: :measure 
     nombre "Producto prueba"
     codigo "1234567890"
     cantidad 15
