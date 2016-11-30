@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20161127230354) do
 
-  create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
     t.string   "name"
     t.string   "provider"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
     t.string   "direccion"
     t.string   "telefono"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
-  create_table "has_nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "has_nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "product_id"
     t.integer  "nutrient_id"
     t.float    "cantidad",    limit: 24
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["product_id"], name: "index_has_nutrients_on_product_id", using: :btree
   end
 
-  create_table "info_app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "info_app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "app_user_id"
     t.date     "fecha_nacimiento"
     t.float    "peso",             limit: 24
@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["app_user_id"], name: "index_info_app_users_on_app_user_id", using: :btree
   end
 
-  create_table "measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "nombre"
     t.string   "abrebiacion"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["measure_id"], name: "index_nutrients_on_measure_id", using: :btree
   end
 
-  create_table "portions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "portions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "product_id"
     t.integer  "measure_id"
     t.integer  "porcion"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["product_id"], name: "index_portions_on_product_id", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "nombre"
     t.float    "cantidad",           limit: 24
     t.float    "calorias",           limit: 24
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
-  create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "expires_at"
     t.integer  "app_user_id"
     t.string   "token"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
     t.index ["app_user_id"], name: "index_tokens_on_app_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
