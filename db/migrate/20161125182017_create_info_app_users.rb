@@ -5,11 +5,11 @@ class CreateInfoAppUsers < ActiveRecord::Migration[5.0]
       t.date :fecha_nacimiento
       t.float :peso
       t.float :estatura
-      t.boolean :sexo
+      t.boolean :sexo, default: true
       t.float :max_calorias
       t.float :min_calorias
-      t.boolean :embarazo
-      t.boolean :lactancia
+      t.boolean :embarazo, default: false
+      t.boolean :lactancia, default: false
 
       t.timestamps
     end
