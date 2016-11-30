@@ -4,7 +4,12 @@ class Api::V1::InfoAppUsersController < Api::V1::MasterApiController
 	end
 
 	def create
-		error!(params[:info].to_yaml,:unprocesable_entity)
+		@info = @app_user.info_app_user.build(info_params)
+		if @info.save
+			render "api/v1/app_users/show"
+		else
+			error_array!(@info.errors.full_messages,:unprocesable_entity)
+		end
 	end
 
 	def update
