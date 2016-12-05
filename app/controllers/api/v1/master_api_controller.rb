@@ -1,6 +1,7 @@
 class Api::V1::MasterApiController < ApplicationController
 	##validar que se reciban los parametros correctos, como el APPID
 	before_action :set_errors
+	skip_before_action :verify_authenticity_token
 
 	def set_errors
 		@errors = []
