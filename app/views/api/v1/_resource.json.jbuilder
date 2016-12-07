@@ -3,9 +3,12 @@ json.id resource.id
 json.attributes resource.attributes
 if resource.class.name.underscore.pluralize == "products"
 	json.imageURL resource.image.url(:mobile)
+	if resource.porciones
+		json.portions resource.portion
+	end
 end
 if resource.class.name.underscore.pluralize == "app_users"
-	json.token resource.tokens.last
+	json.token resource.tokens.last.token
 end
 if defined? relations
 	json.relations do

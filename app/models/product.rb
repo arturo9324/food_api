@@ -1,9 +1,9 @@
 class Product < ApplicationRecord
 	
 
-	validates :nombre, presence: true, uniqueness: true
-	validates_numericality_of :cantidad, presence: true
-	validates_numericality_of :calorias, presence: true
+	validates :nombre, presence: true, uniqueness: true, :length => { :minimum => 5 }
+	validates_numericality_of :cantidad, presence: true, :greater_than => 0.0
+	validates_numericality_of :calorias, presence: true, :greater_than => 0
 	validates :codigo, presence: true, uniqueness: true, length: { minimum: 10, maximum: 10 }
 	validates_inclusion_of :porciones, :in => [true, false]
 
@@ -15,6 +15,7 @@ class Product < ApplicationRecord
 	has_many :nutrients, through: :has_nutrients
 	belongs_to :measure, required: true
 	belongs_to :user, required: true
+	has_one :portion
  
 	def get_nutrient(nutrient_id)
 		has = HasNutrient.where("product_id = ? AND nutrient_id = ?", self.id, nutrient_id).take

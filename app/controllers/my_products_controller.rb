@@ -4,6 +4,7 @@ class MyProductsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :is_not_admin?
 	before_action :set_measure, only: [:create, :update]
+	before_action :set_measures, only: [:new, :edit]
 	#GET /products
 	def index
 		@products = @c_user.products.paginate(page: params[:page],per_page: 10).ultimos
@@ -19,6 +20,7 @@ class MyProductsController < ApplicationController
 	#GET /products/new
 	def new
 		@product = Product.new
+		@product.build_portion
 	end
 
 	#POST /products
@@ -27,6 +29,15 @@ class MyProductsController < ApplicationController
 		@product = @c_user.products.new(product_params)
 		@product.measure = @measure
 		if @product.save
+			if @product.porciones
+				@portion = @product.build_portion(portion_params)
+				@portion.measure = @measure
+				unless @portion.save
+					set_measures()
+					render :edit
+					return 
+				end
+			end
 			redirect_to @product
 		else
 			render :new
@@ -35,11 +46,44 @@ class MyProductsController < ApplicationController
 
 	#GET /products/:id/edit
 	def edit
+		if @product.portion.nil?
+			@product.build_portion
+		end
 	end
 
 	#PUT/PATCH /products/:id
 	def update
-		redirect_to @product, notice: "Falta lógica actualización"
+		if @product.update(product_params)
+			if @product.porciones
+				if @product.portion.nil?
+					@portion = @product.build_portion(portion_params)
+					@portion.measure = @measure
+					unless @portion.save
+						set_measures()
+						render :edit
+						return
+					end
+				else
+					@portion =  @product.portion
+					@portion.measure = @measure
+					unless @portion.update(portion_params)
+						set_measures()
+						render :edit
+						return
+					end
+				end
+			else
+				unless @product.portion.nil?
+					portion = @product.portion
+					portion.destoy
+				end
+			end
+			redirect_to @product, notice: "Se ha actualizado correctamente"
+		else
+			set_measures()
+			render :edit
+			return
+		end
 	end
 
 	#DELETE /products/:id
@@ -54,11 +98,12 @@ class MyProductsController < ApplicationController
 		params.require(:product).permit(:nombre,:cantidad,:calorias,:codigo,:porciones,:image)
 	end
 
-	def product_num_params
-		if params[:product][:porciones].to eq(1)
-			return 1
-		end
-		return 0
+	def portion_params
+		params[:product].require(:portion).permit(:mesure, :porcion, :cantidad, :equivalencia)
+	end
+
+	def set_measures
+		@measures = Measure.all
 	end
 
 	def set_measure
@@ -70,7 +115,6 @@ class MyProductsController < ApplicationController
 			end
 		else@measure = nil
 		end
-		
 	end
 
 	def set_product

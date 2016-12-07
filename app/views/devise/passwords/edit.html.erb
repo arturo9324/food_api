@@ -2,7 +2,17 @@
   <h2>Cambiar contraseña</h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <% if resource.errors.any? %>
+  <div class="alert">
+    <ul type = "circle">
+      <li><i class="material-icons small">report_problem</i>
+      <strong>Error al realizar la operación:</strong></li>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><i class="material-icons tiny">error</i><%= message %></li>
+      <%end%>
+    </ul>
+  </div>
+<% end %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="input-field">

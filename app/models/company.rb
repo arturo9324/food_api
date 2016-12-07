@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
   belongs_to :user,  -> { where admin: false }
 
-  validates :nombre, presence: true, uniqueness: true
+  validates :nombre, presence: true, uniqueness: true, :length => { :minimum => 10 }
   validates :direccion, presence: true, length: { :minimum =>30 }
   
   validates_plausible_phone :telefono, presence: true

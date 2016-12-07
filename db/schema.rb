@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127230354) do
+ActiveRecord::Schema.define(version: 20161206221819) do
 
   create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
   create_table "portions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "product_id"
     t.integer  "measure_id"
-    t.integer  "porcion"
+    t.float    "porcion",      limit: 24
     t.float    "cantidad",     limit: 24
     t.string   "equivalencia"
     t.datetime "created_at",              null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20161127230354) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "nombre"
     t.float    "cantidad",           limit: 24
-    t.float    "calorias",           limit: 24
+    t.integer  "calorias"
     t.string   "codigo"
     t.boolean  "porciones",                     default: false
     t.datetime "created_at",                                    null: false

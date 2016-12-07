@@ -1,80 +1,100 @@
-<%= form_for(@product) do |f|  %>
+<%= form_for([@product]) do |f|  %>
 <% if @product.errors.any? %>
 <div class="alert">
 	<ul type = "circle">
 		<li><i class="material-icons small">report_problem</i>
-			<strong>Error al realizar la operación:</strong></li>
-			<% @product.errors.full_messages.each do |message| %>
-			<li><i class="material-icons tiny">error</i><%= message %></li>
-			<% end %>
-		</ul>
-	</div>
-	<% end %>
-	<div class="input-field">
-		<%= f.label :nombre %>
-		<%= f.text_field :nombre, :required => true %>
-	</div>
+		<strong>Error al realizar la operación:</strong></li>
+		<% @product.errors.full_messages.each do |message| %>
+		<li><i class="material-icons tiny">error</i><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-	<div class="input-field">
-		<%= f.label :cantidad, "Contenido total" %>
-		<%= f.text_field :cantidad, :required => true %>
-	</div>
+<% if (defined? @portion) != nil %>
+<% if @portion.errors.any? %>
+<div class="alert">
+	<ul type="circle">
+		<li> <i class="material-icons small">report_problem</i>
+		<strong>Error al realizar la operación:</strong></li>
+		<% @portion.errors.full_messages.each do |message| %>
+		<li> <i class="material-icons tiny">error</i><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<% end %>
+<div class="input-field">
+	<%= f.label :nombre %>
+	<%= f.text_field :nombre, :required => true %>
+</div>
 
-	<div class="input-field">
-		<%= f.select :measure, Measure.all.collect { |m| [ m.abrebiacion, m.id ] }, :required => true%>
-		<label>Medida del contenido</label>
-	</div>
+<div class="input-field">
+	<%= f.label :cantidad, "Contenido total" %>
+	<%= f.text_field :cantidad, :required => true, class: "numero_decimal" %>
+</div>
 
+<div class="input-field">
+	<%= f.select :measure, options_for_select( @measures.collect { |m| [ m.abrebiacion, m.id ] }, 1), :required => true%>
+	<label>Medida del contenido</label>
+</div>
+
+<div class="input-field">
+	<%= f.label :calorias, "Calorías Kcal/cal" %>
+	<%= f.text_field :calorias, :required => true, class: "numero_entero" %>
+</div>
+<div class="input-field">
+	<%= f.label :codigo, "Código de barras" %>
+	<%= f.text_field :codigo, :required => true, class: "numero_entero" %>
+</div>
+<div class="file-field input-field">
+	<div class="btn">
+		<span>Imagen del producto</span>
+		<%= f.file_field :image %>
+	</div>
+	<div class="file-path-wrapper">
+		<input type="text" class="file-path">
+	</div>
+</div>
+<% unless @product.id.nil? %>
+<div>
+	<label>Imagen Actual</label>
+	<%= image_tag @product.image.url(:mobile) %>
+</div>
+<% end %>
+<div>
+	<label>¿Información presentada en porciones?</label>
+	<p>
+		<%= f.radio_button :porciones, 1, class:"with-gap" , checked: @product.porciones %>
+		<%= f.label :porciones, 'Si', :value => '1'%>
+	</p>
+	<p>
+		<%= f.radio_button :porciones, 0, class:"with-gap" , checked: !@product.porciones %>
+		<%= f.label :porciones, 'No', :value => '0' %>
+	</p>
+</div>
+
+<%= f.fields_for @product.portion do |u| %>
+<div class="hide" id="porciones_num">
 	<div class="input-field">
-		<%= f.label :calorias, "Calorías Kcal/cal" %>
-		<%= f.text_field :calorias, :required => true %>
+		<%= u.label :porcion %>
+		<%= u.text_field :porcion, class: "numero_decimal" %>
 	</div>
 	<div class="input-field">
-		<%= f.label :codigo, "Código de barras" %>
-		<%= f.text_field :codigo, :required => true %>
+		<%= u.label :cantidad, "Contenido de la porción" %>
+		<%= u.text_field :cantidad, class: "numero_decimal" %>
 	</div>
-	<div class="file-field input-field">
-		<div class="btn">
-			<span>Imagen del producto</span>
-			<%= f.file_field :image %>
-		</div>
-		<div class="file-path-wrapper">
-			<input type="text" class="file-path">
-		</div>
+	<div class="input-field">
+		<%= u.select :measure, options_for_select( @measures.collect { |m| [ m.abrebiacion, m.id ] }, 1), :selected => @product.portion.measure, :required => true%>
+		<label>Medida de la porción</label>
 	</div>
-	<% unless @product.id.nil? %>
-	<div>
-		<label>Imagen Actual</label>
-		<%= image_tag @product.image.url(:mobile) %>
+	<div class="input-field">
+		<%= u.label :equivalencia, "Equivalencia de la porción" %>
+		<%= u.text_field :equivalencia %>
 	</div>
-	<% end %>
-	<div>
-		<label>¿Información presentada en porciones?</label>
-		<p>
-			<%= f.radio_button :porciones, 1, class:"with-gap" , checked: @product.porciones %>
-			<%= f.label :porciones, 'Si', :value => '1'%>
-		</p>
-		<p>
-			<%= f.radio_button :porciones, 0, class:"with-gap" , checked: !@product.porciones %>
-			<%= f.label :porciones, 'No', :value => '0' %>
-		</p>
-	</div>
-	<% if @product.porciones %>
-	<div class="input-field" id="porciones_num">
-		<div class="field">
-			<label for="product_prociones_num">Cantidad de porciones</label>
-			<input type=text name="porciones_num" class="form-control",  id="product_porciones_num">
-		</div>
-	</div>
-	<% else %>
-	<div class="input-field hide" id="porciones_num">
-		<div class="field">
-			<label for="product_prociones_num">Cantidad de porciones</label>
-			<input type=text name="porciones_num" class="form-control",  id="product_porciones_num">
-		</div>
-	</div>
-	<% end %>
-	<div class="action top-space center">
-		<%= f.submit "Enviar", class:"btn" %>
-	</div>
-	<% end %>
+</div>
+<% end %>
+<div class="action top-space center">
+	<%= f.submit "Enviar", class:"btn" %>
+</div>
+<% end %>
