@@ -1,4 +1,5 @@
 <div class="container center">
+	<%= @product.on_hold? ? raw("<script>swal({ title: 'Aun no se han registrado las porciones para este producto', text:'Por favor registralas para que puedan ser utilizadas por los usuarios', type: 'error'})</script>") : "" %>
 	<h1 style="display: inline-block; margin-right: 15px"><%= @product.nombre %> - <%= link_to "<i class = 'fi-pencil be-icon-green medium'></i>".html_safe, edit_product_path(@product) %> - </h1><%= link_to "<i class = 'fi-trash medium be-icon-red' style='display: inline-block;'></i>".html_safe, product_path(@product), method: :delete %>
 	<div class="field">
 		<%= image_tag @product.image.url(:web) %>
@@ -15,8 +16,5 @@
 		<h3>Codigo: </h3>
 		<%= @product.codigo %>
 	</p>
-	<% if @product.porciones == true %>
-	mostrar porciones
-	<% end %>
 </div>
 <%= render "has_nutrient/form" %>

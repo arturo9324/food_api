@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206221819) do
+ActiveRecord::Schema.define(version: 20161209191913) do
 
   create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 20161206221819) do
     t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "best_nutrient_values", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "app_user_id"
+    t.integer  "nutrient_id"
+    t.float    "optimo",      limit: 24
+    t.float    "maximo",      limit: 24
+    t.float    "minimo",      limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["app_user_id"], name: "index_best_nutrient_values_on_app_user_id", using: :btree
+    t.index ["nutrient_id"], name: "index_best_nutrient_values_on_nutrient_id", using: :btree
   end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -88,15 +100,15 @@ ActiveRecord::Schema.define(version: 20161206221819) do
     t.float    "cantidad",           limit: 24
     t.integer  "calorias"
     t.string   "codigo"
-    t.boolean  "porciones",                     default: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.integer  "measure_id"
+    t.string   "state",                         default: "on_hold"
     t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
@@ -128,6 +140,8 @@ ActiveRecord::Schema.define(version: 20161206221819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "best_nutrient_values", "app_users"
+  add_foreign_key "best_nutrient_values", "nutrients"
   add_foreign_key "companies", "users"
   add_foreign_key "has_nutrients", "nutrients"
   add_foreign_key "has_nutrients", "products"

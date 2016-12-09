@@ -3,7 +3,8 @@ class MyProductsController < ApplicationController
 	before_action :set_product, except: [:index, :new, :create]
 	before_action :authenticate_user!
 	before_action :is_not_admin?
-	before_action :set_measure, only: [:create, :update]
+	before_action :set_measure_product, only: [:create, :update]
+	before_action :set_measure_portion, only: [:create, :update]
 	before_action :set_measures, only: [:new, :edit]
 	#GET /products
 	def index
@@ -29,15 +30,14 @@ class MyProductsController < ApplicationController
 		@product = @c_user.products.new(product_params)
 		@product.measure = @measure
 		if @product.save
-			if @product.porciones
-				@portion = @product.build_portion(portion_params)
-				@portion.measure = @measure
-				unless @portion.save
-					set_measures()
-					render :edit
-					return 
-				end
+			@portion = @product.build_portion(portion_params)
+			@portion.measure = @p_measure
+			unless @portion.save
+				set_measures()
+				render :edit
+				return 
 			end
+			@product.publish!
 			redirect_to @product
 		else
 			render :new
@@ -53,30 +53,30 @@ class MyProductsController < ApplicationController
 
 	#PUT/PATCH /products/:id
 	def update
+		#raise params.to_yaml
 		if @product.update(product_params)
-			if @product.porciones
-				if @product.portion.nil?
-					@portion = @product.build_portion(portion_params)
-					@portion.measure = @measure
-					unless @portion.save
-						set_measures()
-						render :edit
-						return
+			if @product.portion.nil?
+				@portion = @product.build_portion(portion_params)
+				@portion.measure = @p_measure
+				unless @portion.save
+					if @product.may_unpublish?
+						@product.unpublish!
 					end
-				else
-					@portion =  @product.portion
-					@portion.measure = @measure
-					unless @portion.update(portion_params)
-						set_measures()
-						render :edit
-						return
-					end
+					set_measures()
+					render :edit
+					return
 				end
 			else
-				unless @product.portion.nil?
-					portion = @product.portion
-					portion.destoy
+				@portion =  @product.portion
+				@portion.measure = @p_measure
+				unless @portion.update(portion_params)
+					set_measures()
+					render :edit
+					return
 				end
+			end
+			if @product.may_publish?
+				@product.publish!
 			end
 			redirect_to @product, notice: "Se ha actualizado correctamente"
 		else
@@ -95,25 +95,38 @@ class MyProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:nombre,:cantidad,:calorias,:codigo,:porciones,:image)
+		params.require(:product).permit(:nombre,:cantidad,:calorias,:codigo,:image)
 	end
 
 	def portion_params
-		params[:product].require(:portion).permit(:mesure, :porcion, :cantidad, :equivalencia)
+		params[:product].require(:portion).permit(:porcion, :cantidad, :equivalencia)
 	end
 
 	def set_measures
 		@measures = Measure.all
 	end
 
-	def set_measure
+	def set_measure_product
 		if params[:product].has_key?(:measure)
 			if Measure.exists?(params[:product][:measure])
 				@measure = Measure.find(params[:product][:measure])
 			else
 				@measure = nil
 			end
-		else@measure = nil
+		else
+			@measure = nil
+		end
+	end
+
+	def set_measure_portion
+		if params[:product][:portion].has_key?(:measure)
+			if Measure.exists?(params[:product][:portion][:measure])
+				@p_measure = Measure.find(params[:product][:portion][:measure])
+			else
+				@p_measure = nil
+			end
+		else
+			@p_measure = nil
 		end
 	end
 

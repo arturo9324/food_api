@@ -62,20 +62,9 @@
 	<%= image_tag @product.image.url(:mobile) %>
 </div>
 <% end %>
-<div>
-	<label>¿Información presentada en porciones?</label>
-	<p>
-		<%= f.radio_button :porciones, 1, class:"with-gap" , checked: @product.porciones %>
-		<%= f.label :porciones, 'Si', :value => '1'%>
-	</p>
-	<p>
-		<%= f.radio_button :porciones, 0, class:"with-gap" , checked: !@product.porciones %>
-		<%= f.label :porciones, 'No', :value => '0' %>
-	</p>
-</div>
 
 <%= f.fields_for @product.portion do |u| %>
-<div class="hide" id="porciones_num">
+<div class="group" id="porciones_num">
 	<div class="input-field">
 		<%= u.label :porcion %>
 		<%= u.text_field :porcion, class: "numero_decimal" %>
@@ -85,7 +74,7 @@
 		<%= u.text_field :cantidad, class: "numero_decimal" %>
 	</div>
 	<div class="input-field">
-		<%= u.select :measure, options_for_select( @measures.collect { |m| [ m.abrebiacion, m.id ] }, 1), :selected => @product.portion.measure, :required => true%>
+		<%= u.select :measure, options_for_select( @measures.collect { |m| [ m.abrebiacion, m.id ] }, (@product.portion.present? ? "1" : @product.portion.measure.id) ), :required => true%>
 		<label>Medida de la porción</label>
 	</div>
 	<div class="input-field">

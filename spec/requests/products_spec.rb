@@ -6,6 +6,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
 		before :each do
 			@product = FactoryGirl.create(:product, codigo: "1234567890")
+			@product.publish
 			@user = FactoryGirl.create(:app_user)
 			@token = FactoryGirl.create(:token, app_user: @user)
 		end
@@ -39,7 +40,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 				get "/api/v1/products/0987654321", params: { uid: @user.uid, provider: @user.provider, token: @token.token }
 			end
 
-			it { expect(response).to have_http_status(:unprocessable_entity) }
+			it { expect(response).to have_http_status(:not_found) }
 
 			it { expect(response.header['Content-Type']).to include "application/json" }
 

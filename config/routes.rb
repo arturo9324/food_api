@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   		resources :products, controller: "products", only: [:show]
       resources :app_users, only: [:create]
       resources :info_app_users, only: [:index, :create, :update]
+      resources :best_nutrient_values, only: [:index, :create, :update]
   	end
   end
 
