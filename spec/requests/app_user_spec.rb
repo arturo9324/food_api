@@ -51,7 +51,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 
 			it "should respond with the same token" do
 				json = JSON.parse(response.body)
-				expect(json['data']['token']['token']).to eq(@token_value)
+				expect(json['data']['token']).to eq(@token_value)
 
 			end
 		end
@@ -76,6 +76,26 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 			it "should respond with diferent token" do
 				json = JSON.parse(response.body)
 				expect(json['data']['token']['token']).to_not eq(@token_value)
+			end
+		end
+
+		context "with invalid params" do
+			before :each do
+				@auth =  { provider: "google", email: "123a@gmail.com", name: "ajdad"}
+				post api_v1_app_users_path, params: { auth: @auth }
+			end
+
+			it { have_http_status(:unprocessable_entity) }
+
+			it { change(AppUser, :count ).by(0) }
+
+			it { change(Token, :count).by(0) }
+
+			it { expect(response.header['Content-Type']).to include 'application/json' }
+
+			it "should respond with diferent token" do
+				json = JSON.parse(response.body)
+				expect(json['errors']).to_not be_empty
 			end
 		end
 	end

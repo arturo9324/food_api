@@ -7,6 +7,5 @@ FactoryGirl.define do
     cantidad 15
     calorias 15
     image_file_name { Faker::Avatar.image }
-    porciones false
   end
 end

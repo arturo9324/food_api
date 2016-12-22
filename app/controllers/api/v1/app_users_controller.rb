@@ -17,6 +17,7 @@ class Api::V1::AppUsersController < Api::V1::MasterApiController
 				end
 			else
 				error_array!(@user.errors.full_messages, :unprocessable_entity)
+				return
 			end
 			render "api/v1/app_users/show"
 		end

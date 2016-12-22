@@ -1,6 +1,8 @@
 class AppUser < ApplicationRecord
 
 	has_many :tokens
+	has_one :info_app_user
+	has_many :best_nutrient_values
 
 	validates :email, presence: true, email: true, uniqueness: true
 	validates :name, presence: true

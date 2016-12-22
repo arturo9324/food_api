@@ -5,8 +5,10 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 	describe "GET /api/v1/products/:id" do
 
 		before :each do
-			@product = FactoryGirl.create(:product, codigo: "1234567890")
-			@product.publish
+			@measure = FactoryGirl.create(:measure)
+			@product = FactoryGirl.create(:product, codigo: "1234567890", measure: @measure)
+			@portion = FactoryGirl.create(:portion, product: @product, measure: @measure)
+			@product.publish!
 			@user = FactoryGirl.create(:app_user)
 			@token = FactoryGirl.create(:token, app_user: @user)
 		end
@@ -14,8 +16,8 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 		context "with valid code and token" do
 			before :each do
 				for i in 0..5
-					@nutrients = FactoryGirl.create(:nutrient)
-					FactoryGirl.create(:has_nutrient, product: @product, nutrient: @nutrient)
+					@nutrients = FactoryGirl.create(:nutrient, measure: @measure)
+					FactoryGirl.create(:has_nutrient, product: @product, nutrient: @nutrients)
 				end
 				get "/api/v1/products/#{@product.codigo}", params: { uid: @user.uid, provider: @user.provider, token: @token.token }
 			end

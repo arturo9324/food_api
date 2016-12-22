@@ -1,5 +1,7 @@
 class HasNutrientsController < ApplicationController
 
+	before_action :authenticate_user!
+	before_action :is_not_admin?
 	before_action :set_product
 	before_action :set_values
 	before_action :select_all!
@@ -64,8 +66,12 @@ class HasNutrientsController < ApplicationController
 	end
 
 	 def set_product
-		if (Product.exists?(params[:product_id]))
-			@product = Product.find(params[:product_id])
+		if (Product.exists?(params[:id]))
+			if @c_user == Product.find(params[:id]).user
+				@product = Product.find(params[:id])
+			else
+				redirect_to products_path, alert: "No tienes permiso para acceder a este producto"
+			end
 		else
 			error_resource_product
 		end

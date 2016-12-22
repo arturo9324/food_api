@@ -1,0 +1,1 @@
+json.partial! "api/v1/resource", resource: @app_user, relations: ['best_nutrient_values']

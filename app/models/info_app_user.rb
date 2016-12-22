@@ -1,5 +1,7 @@
 class InfoAppUser < ApplicationRecord
-  belongs_to :app_user, required: true
+  	belongs_to :app_user, required: true
+  	has_many :has_diseases
+  	has_many :diseases, through: :has_diseases
 
  	validates :fecha_nacimiento, presence: true, :timeliness => { :before => lambda { 10.years.ago }, :type => :date }
 	validates_numericality_of :peso, presence: true, :greater_than_or_equal_to => 30, :less_than => 200

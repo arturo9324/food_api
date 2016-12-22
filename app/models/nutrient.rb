@@ -3,5 +3,6 @@ class Nutrient < ApplicationRecord
 
 	has_many :has_nutrients
 	has_many :products, through: :has_nutrients
-	has_one :measure
+	belongs_to :measure, required: true
+	has_many :best_nutrient_values
 end

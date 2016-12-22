@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-	def error_array(arreglo, status)
+	def error_array!(arreglo, status)
 		@errors = @errors + arreglo
 		response.status = status
 		render "api/v1/errors"
