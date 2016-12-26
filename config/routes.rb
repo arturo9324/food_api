@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :app_users, only: [:create]
       resources :info_app_users, only: [:index, :create]
       resources :best_nutrient_values, only: [:index, :create], as: "values"
+      resources :has_products, only: [:index, :create]
   	end
   end
 

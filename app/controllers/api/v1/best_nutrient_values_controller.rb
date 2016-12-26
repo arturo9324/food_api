@@ -16,20 +16,45 @@ class Api::V1::BestNutrientValuesController < Api::V1::MasterApiController
 			@values = params[:best]
 			@nutrients = Nutrient.all
 			@nutrients.each do |n|
-				unless @values.has_key?(:"_#{n.id}")
-					error!("Envia todos los nutrientes", :unprocessable_entity)
+				id = "#{n.id}"
+				exist = false
+				key = true
+				valid = true
+				if @values.empty?
+					error!("No se enviaron los nutrientes", :unprocessable_entity)
+					return
+				end 
+				@values.each do |v|
+					if v.has_key?(:"_#{id}")
+						exist = true
+						unless v[:"_#{n.id}"].has_key?(:optimo) || v[:"_#{n.id}"].has_key?(:maximo) || v[:"_#{n.id}"].has_key?(:minimo)
+							key = false
+							break
+						end
+						@req = @app_user.best_nutrient_values.new(v.require(:"_#{n.id}").permit(:optimo, :maximo, :minimo))
+						@req.nutrient = n
+						unless @req.valid?
+							valid = false
+							break
+						end 
+						break
+					end
+				end
+				unless exist
+					error!("No se enviaron todos los nutrientes", :unprocessable_entity)
 					return
 				end
-				unless @values[:"_#{n.id}"].has_key?(:optimo) || @values[:"_#{n.id}"].has_key?(:maximo) || @values[:"_#{n.id}"].has_key?(:minimo)
-					error!("Error de formato de nutrientes", :unprocessable_entity)
+
+				unless key
+					error!("No se envio toda la información", :unprocessable_entity)
 					return
 				end
-				req = @app_user.best_nutrient_values.new(nutrient: n, optimo: @values[:"_#{n.id}"][:optimo], maximo: @values[:"_#{n.id}"][:maximo], minimo: @values[:"_#{n.id}"][:minimo])
-				unless req.valid?
-					error!(req.errors.full_messages, :unprocessable_entity)
+
+				unless valid
+					error_array!(@req.errors.full_messages, :unprocessable_entity)
 					return
 				end
-				@requests << req
+				@requests << @req
 			end
 		else
 			error!("No se envio la información de los nutrientes", :unprocessable_entity)
@@ -38,7 +63,7 @@ class Api::V1::BestNutrientValuesController < Api::V1::MasterApiController
 		delete_all!
 		success = @requests.each(&:save)
 		unless success.any?
-			error!("Ocurrio un error mientras se registraban los nutrientes", :unprocessable_entity)
+			error_array("Algo paso", :unprocessable_entity)
 			return
 		end
 		unless success.all?

@@ -282,192 +282,614 @@ a {
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">AppUser</dt>
-    <script type="text/javascript">moveProgressBar('1.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require email to be set</span><span class='duration'>0.68522s</span></dd>
-    <script type="text/javascript">moveProgressBar('3.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require provider to be set</span><span class='duration'>0.00000s</span></dd>
+    <script type="text/javascript">moveProgressBar('0.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require email to be set</span><span class='duration'>0.88435s</span></dd>
+    <script type="text/javascript">moveProgressBar('1.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require case sensitive unique value for email</span><span class='duration'>0.08458s</span></dd>
+    <script type="text/javascript">moveProgressBar('1.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should allow email to be set to &quot;arturo9324@gmial.com&quot;</span><span class='duration'>0.00578s</span></dd>
+    <script type="text/javascript">moveProgressBar('2.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not allow email to be set to &quot;arturo9324gmailcom&quot;</span><span class='duration'>0.00456s</span></dd>
+    <script type="text/javascript">moveProgressBar('2.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not allow email to be set to &quot;arturo9324@gmailcom&quot;</span><span class='duration'>0.00503s</span></dd>
+    <script type="text/javascript">moveProgressBar('3.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not allow email to be set to &quot;arturo9324gmail.com&quot;</span><span class='duration'>0.00417s</span></dd>
+    <script type="text/javascript">moveProgressBar('4.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require provider to be set</span><span class='duration'>0.00702s</span></dd>
+    <script type="text/javascript">moveProgressBar('4.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require uid to be set</span><span class='duration'>0.00752s</span></dd>
+    <script type="text/javascript">moveProgressBar('5.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require name to be set</span><span class='duration'>0.00705s</span></dd>
     <script type="text/javascript">moveProgressBar('5.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require uid to be set</span><span class='duration'>0.01563s</span></dd>
-    <script type="text/javascript">moveProgressBar('7.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require name to be set</span><span class='duration'>0.00000s</span></dd>
-    <script type="text/javascript">moveProgressBar('9.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">should create a new user if the uid and provider don&#39;t exist</span><span class='duration'>0.06858s</span></dd>
-    <script type="text/javascript">moveProgressBar('11.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">should not create a new user if the info is missing</span><span class='duration'>0.00000s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should create a new user if the uid and provider don&#39;t exist</span><span class='duration'>0.10036s</span></dd>
+    <script type="text/javascript">moveProgressBar('6.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not create a new user if the info is missing</span><span class='duration'>0.00702s</span></dd>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_2" class="passed">HasNutrient</dt>
-    <script type="text/javascript">moveProgressBar('13.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">should belong to product</span><span class='duration'>0.01563s</span></dd>
-    <script type="text/javascript">moveProgressBar('15.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should belong to nutrient</span><span class='duration'>0.00000s</span></dd>
-    <script type="text/javascript">moveProgressBar('17.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should only allow numeric, integer values for cantidad</span><span class='duration'>0.00000s</span></dd>
+  <dt id="example_group_2" class="passed">BestNutrientValue</dt>
+    <script type="text/javascript">moveProgressBar('6.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to app_user</span><span class='duration'>0.00802s</span></dd>
+    <script type="text/javascript">moveProgressBar('7.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to nutrient</span><span class='duration'>0.00151s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric, integer values for optimo</span><span class='duration'>0.02807s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric, integer values for maximo</span><span class='duration'>0.00902s</span></dd>
+    <script type="text/javascript">moveProgressBar('9.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric, integer values for minimo</span><span class='duration'>0.00902s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_3" class="passed">Nutrient</dt>
-    <script type="text/javascript">moveProgressBar('19.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require nombre to be set</span><span class='duration'>0.03125s</span></dd>
-    <script type="text/javascript">moveProgressBar('21.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require unique value for nombre</span><span class='duration'>0.02165s</span></dd>
-    <script type="text/javascript">moveProgressBar('23.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have many has_nutrients</span><span class='duration'>0.01567s</span></dd>
-    <script type="text/javascript">moveProgressBar('25.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have many products through has_nutrients</span><span class='duration'>0.00000s</span></dd>
+  <dt id="example_group_3" class="passed">Disease</dt>
+    <script type="text/javascript">moveProgressBar('9.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require nombre to be set</span><span class='duration'>0.02167s</span></dd>
+    <script type="text/javascript">moveProgressBar('10.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require case sensitive unique value for nombre</span><span class='duration'>0.03795s</span></dd>
+    <script type="text/javascript">moveProgressBar('11.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should ensure nombre has a length between 5 and 30</span><span class='duration'>0.01054s</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_4" class="passed">Product</dt>
-    <script type="text/javascript">moveProgressBar('27.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require nombre to be set</span><span class='duration'>0.19969s</span></dd>
-    <script type="text/javascript">moveProgressBar('29.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require cantidad to be set</span><span class='duration'>0.14731s</span></dd>
-    <script type="text/javascript">moveProgressBar('31.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require calorias to be set</span><span class='duration'>0.11595s</span></dd>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require codigo to be set</span><span class='duration'>0.12118s</span></dd>
-    <script type="text/javascript">moveProgressBar('35.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have an attachment named image</span><span class='duration'>0.06278s</span></dd>
-    <script type="text/javascript">moveProgressBar('37.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">should require presence of attachment image</span><span class='duration'>0.10027s</span></dd>
+  <dt id="example_group_4" class="passed">HasDisease</dt>
+    <script type="text/javascript">moveProgressBar('11.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to info_app_user</span><span class='duration'>0.00464s</span></dd>
+    <script type="text/javascript">moveProgressBar('12.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to disease</span><span class='duration'>0.00104s</span></dd>
   </dl>
 </div>
 <div id="div_group_5" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_5" class="passed">Token</dt>
-    <script type="text/javascript">moveProgressBar('39.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">should belong to app_user</span><span class='duration'>0.01558s</span></dd>
+  <dt id="example_group_5" class="passed">HasNutrient</dt>
+    <script type="text/javascript">moveProgressBar('12.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to product</span><span class='duration'>0.00604s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to nutrient</span><span class='duration'>0.00098s</span></dd>
+    <script type="text/javascript">moveProgressBar('13.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric, integer values for cantidad</span><span class='duration'>0.01103s</span></dd>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_6" class="passed">Api::V1::AppUsersController</dt>
+  <dt id="example_group_6" class="passed">InfoAppUser</dt>
+    <script type="text/javascript">moveProgressBar('14.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to app_user</span><span class='duration'>0.00953s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require fecha_nacimiento to be set</span><span class='duration'>0.01000s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should allow fecha_nacimiento to be set to &quot;2006-1-12&quot;</span><span class='duration'>0.00549s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not allow fecha_nacimiento to be set to &quot;2006-31-12&quot;</span><span class='duration'>0.00602s</span></dd>
+    <script type="text/javascript">moveProgressBar('16.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not allow fecha_nacimiento to be set to &quot;fecha&quot;</span><span class='duration'>0.00602s</span></dd>
+    <script type="text/javascript">moveProgressBar('17.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric values for peso</span><span class='duration'>0.00852s</span></dd>
+    <script type="text/javascript">moveProgressBar('18.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric values for estatura</span><span class='duration'>0.00753s</span></dd>
+    <script type="text/javascript">moveProgressBar('18.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric values for max_calorias</span><span class='duration'>0.01054s</span></dd>
+    <script type="text/javascript">moveProgressBar('19.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric values for min_calorias</span><span class='duration'>0.00749s</span></dd>
   </dl>
 </div>
 <div id="div_group_7" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_7" class="passed">POST /api/v1/app_users</dt>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_7" class="passed">Measure</dt>
+    <script type="text/javascript">moveProgressBar('19.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require nombre to be set</span><span class='duration'>0.00905s</span></dd>
+    <script type="text/javascript">moveProgressBar('20.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require abrebiacion to be set</span><span class='duration'>0.00399s</span></dd>
   </dl>
 </div>
 <div id="div_group_8" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_8" class="passed">Create a new user</dt>
-    <script type="text/javascript">moveProgressBar('41.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:14</span><span class='duration'>0.23703s</span></dd>
-    <script type="text/javascript">moveProgressBar('43.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:16</span><span class='duration'>0.18355s</span></dd>
-    <script type="text/javascript">moveProgressBar('45.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.17862s</span></dd>
-    <script type="text/javascript">moveProgressBar('47.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with the created user</span><span class='duration'>0.15323s</span></dd>
-    <script type="text/javascript">moveProgressBar('49.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">has to return the created token</span><span class='duration'>0.16813s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_8" class="passed">Nutrient</dt>
+    <script type="text/javascript">moveProgressBar('20.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require nombre to be set</span><span class='duration'>0.02058s</span></dd>
+    <script type="text/javascript">moveProgressBar('21.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require unique value for nombre</span><span class='duration'>0.03209s</span></dd>
+    <script type="text/javascript">moveProgressBar('22.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have many has_nutrients</span><span class='duration'>0.00802s</span></dd>
+    <script type="text/javascript">moveProgressBar('22.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have many products through has_nutrients</span><span class='duration'>0.00200s</span></dd>
   </dl>
 </div>
 <div id="div_group_9" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_9" class="passed">With a created user</dt>
-    <script type="text/javascript">moveProgressBar('50.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:41</span><span class='duration'>0.17868s</span></dd>
-    <script type="text/javascript">moveProgressBar('52.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:43</span><span class='duration'>0.18488s</span></dd>
-    <script type="text/javascript">moveProgressBar('54.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.16858s</span></dd>
-    <script type="text/javascript">moveProgressBar('56.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with the same user</span><span class='duration'>0.16843s</span></dd>
-    <script type="text/javascript">moveProgressBar('58.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with the same token</span><span class='duration'>0.16311s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_9" class="passed">Product</dt>
+    <script type="text/javascript">moveProgressBar('23.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require nombre to be set</span><span class='duration'>0.28795s</span></dd>
+    <script type="text/javascript">moveProgressBar('23.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric values for cantidad</span><span class='duration'>0.14984s</span></dd>
+    <script type="text/javascript">moveProgressBar('24.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should only allow numeric values for calorias</span><span class='duration'>0.14986s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require codigo to be set</span><span class='duration'>0.13909s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have an attachment named image</span><span class='duration'>0.07694s</span></dd>
+    <script type="text/javascript">moveProgressBar('26.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should require presence of attachment image</span><span class='duration'>0.14082s</span></dd>
   </dl>
 </div>
 <div id="div_group_10" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_10" class="passed">with a created user and a invalid token</dt>
-    <script type="text/javascript">moveProgressBar('60.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:68</span><span class='duration'>0.16836s</span></dd>
-    <script type="text/javascript">moveProgressBar('62.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:70</span><span class='duration'>0.16728s</span></dd>
-    <script type="text/javascript">moveProgressBar('64.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:72</span><span class='duration'>0.17920s</span></dd>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.15379s</span></dd>
-    <script type="text/javascript">moveProgressBar('68.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with diferent token</span><span class='duration'>0.18407s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_10" class="passed">Token</dt>
+    <script type="text/javascript">moveProgressBar('26.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should belong to app_user</span><span class='duration'>0.00702s</span></dd>
   </dl>
 </div>
 <div id="div_group_11" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_11" class="passed">Api::V1::ProductsController</dt>
+  <dt id="example_group_11" class="passed">Api::V1::AppUsersController</dt>
   </dl>
 </div>
 <div id="div_group_12" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_12" class="passed">GET /api/v1/products/:id</dt>
+  <dt id="example_group_12" class="passed">POST /api/v1/app_users</dt>
   </dl>
 </div>
 <div id="div_group_13" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_13" class="passed">with valid code and token</dt>
-    <script type="text/javascript">moveProgressBar('70.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.28441s</span></dd>
-    <script type="text/javascript">moveProgressBar('72.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.19989s</span></dd>
-    <script type="text/javascript">moveProgressBar('74.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">expect to have a content</span><span class='duration'>0.37877s</span></dd>
-    <script type="text/javascript">moveProgressBar('76.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">expect to respond with the related nutrients</span><span class='duration'>0.20068s</span></dd>
+  <dt id="example_group_13" class="passed">Create a new user</dt>
+    <script type="text/javascript">moveProgressBar('27.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:14</span><span class='duration'>0.45011s</span></dd>
+    <script type="text/javascript">moveProgressBar('27.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:16</span><span class='duration'>0.25836s</span></dd>
+    <script type="text/javascript">moveProgressBar('28.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.26570s</span></dd>
+    <script type="text/javascript">moveProgressBar('29.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created user</span><span class='duration'>0.25003s</span></dd>
+    <script type="text/javascript">moveProgressBar('29.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">has to return the created token</span><span class='duration'>0.24918s</span></dd>
   </dl>
 </div>
 <div id="div_group_14" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_14" class="passed">with invalid code</dt>
-    <script type="text/javascript">moveProgressBar('78.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.32202s</span></dd>
-    <script type="text/javascript">moveProgressBar('80.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.31584s</span></dd>
-    <script type="text/javascript">moveProgressBar('82.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.31617s</span></dd>
+  <dt id="example_group_14" class="passed">With a created user</dt>
+    <script type="text/javascript">moveProgressBar('30.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:41</span><span class='duration'>0.24140s</span></dd>
+    <script type="text/javascript">moveProgressBar('30.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:43</span><span class='duration'>0.24924s</span></dd>
+    <script type="text/javascript">moveProgressBar('31.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.25027s</span></dd>
+    <script type="text/javascript">moveProgressBar('31.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the same user</span><span class='duration'>0.25743s</span></dd>
+    <script type="text/javascript">moveProgressBar('32.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the same token</span><span class='duration'>0.24174s</span></dd>
   </dl>
 </div>
 <div id="div_group_15" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_15" class="passed">with diferent token</dt>
-    <script type="text/javascript">moveProgressBar('84.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unauthorized (401)</span><span class='duration'>0.31606s</span></dd>
-    <script type="text/javascript">moveProgressBar('86.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.35269s</span></dd>
-    <script type="text/javascript">moveProgressBar('88.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.34734s</span></dd>
+  <dt id="example_group_15" class="passed">with a created user and a invalid token</dt>
+    <script type="text/javascript">moveProgressBar('33.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:68</span><span class='duration'>0.25734s</span></dd>
+    <script type="text/javascript">moveProgressBar('33.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:70</span><span class='duration'>0.25000s</span></dd>
+    <script type="text/javascript">moveProgressBar('34.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:72</span><span class='duration'>0.29937s</span></dd>
+    <script type="text/javascript">moveProgressBar('34.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.26738s</span></dd>
+    <script type="text/javascript">moveProgressBar('35.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with diferent token</span><span class='duration'>0.24931s</span></dd>
   </dl>
 </div>
 <div id="div_group_16" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_16" class="passed">with invalid token</dt>
-    <script type="text/javascript">moveProgressBar('90.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unauthorized (401)</span><span class='duration'>0.33298s</span></dd>
-    <script type="text/javascript">moveProgressBar('92.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.32115s</span></dd>
-    <script type="text/javascript">moveProgressBar('94.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.32898s</span></dd>
+  <dt id="example_group_16" class="passed">with invalid params</dt>
+    <script type="text/javascript">moveProgressBar('36.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:88</span><span class='duration'>0.20552s</span></dd>
+    <script type="text/javascript">moveProgressBar('36.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:90</span><span class='duration'>0.20204s</span></dd>
+    <script type="text/javascript">moveProgressBar('37.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">example at ./spec/requests/app_user_spec.rb:92</span><span class='duration'>0.20254s</span></dd>
+    <script type="text/javascript">moveProgressBar('37.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.20455s</span></dd>
+    <script type="text/javascript">moveProgressBar('38.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with diferent token</span><span class='duration'>0.20857s</span></dd>
   </dl>
 </div>
 <div id="div_group_17" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_17" class="passed">with no user</dt>
-    <script type="text/javascript">moveProgressBar('96.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unauthorized (401)</span><span class='duration'>0.30540s</span></dd>
-    <script type="text/javascript">moveProgressBar('98.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.33026s</span></dd>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.31642s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_17" class="passed">Api::V1::BestNutrientValuesController</dt>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>9.23993 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "51 examples, 0 failures";</script>
+<div id="div_group_18" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_18" class="passed">GET /api/v1/best_nutrient_value</dt>
+  </dl>
+</div>
+<div id="div_group_19" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_19" class="passed">with nutrients created</dt>
+    <script type="text/javascript">moveProgressBar('38.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :ok (200)</span><span class='duration'>0.37452s</span></dd>
+    <script type="text/javascript">moveProgressBar('39.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should return the asked records</span><span class='duration'>0.30001s</span></dd>
+  </dl>
+</div>
+<div id="div_group_20" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_20" class="passed">whith nutrients not created</dt>
+    <script type="text/javascript">moveProgressBar('40.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :not_found (404)</span><span class='duration'>0.23229s</span></dd>
+    <script type="text/javascript">moveProgressBar('40.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the error</span><span class='duration'>0.26683s</span></dd>
+  </dl>
+</div>
+<div id="div_group_21" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_21" class="passed">POST /api/v1/best_nutrient_value</dt>
+  </dl>
+</div>
+<div id="div_group_22" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_22" class="passed">new record with correct values</dt>
+    <script type="text/javascript">moveProgressBar('41.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :ok (200)</span><span class='duration'>0.28262s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 3</span><span class='duration'>0.31577s</span></dd>
+    <script type="text/javascript">moveProgressBar('42.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created BNV</span><span class='duration'>0.28369s</span></dd>
+  </dl>
+</div>
+<div id="div_group_23" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_23" class="passed">new record with incorrect values</dt>
+    <script type="text/javascript">moveProgressBar('43.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.31573s</span></dd>
+    <script type="text/javascript">moveProgressBar('43.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 0</span><span class='duration'>0.33506s</span></dd>
+    <script type="text/javascript">moveProgressBar('44.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the error explanation</span><span class='duration'>0.28053s</span></dd>
+  </dl>
+</div>
+<div id="div_group_24" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_24" class="passed">whit no sended data</dt>
+    <script type="text/javascript">moveProgressBar('44.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.24207s</span></dd>
+    <script type="text/javascript">moveProgressBar('45.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 0</span><span class='duration'>0.24088s</span></dd>
+    <script type="text/javascript">moveProgressBar('45.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the error explanation</span><span class='duration'>0.30010s</span></dd>
+  </dl>
+</div>
+<div id="div_group_25" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_25" class="passed">whith missed attributes</dt>
+    <script type="text/javascript">moveProgressBar('46.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.25816s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 0</span><span class='duration'>0.24943s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the error explanation</span><span class='duration'>0.30053s</span></dd>
+  </dl>
+</div>
+<div id="div_group_26" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_26" class="passed">whit data saved and correct values</dt>
+    <script type="text/javascript">moveProgressBar('48.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :ok (200)</span><span class='duration'>0.34898s</span></dd>
+    <script type="text/javascript">moveProgressBar('48.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 3</span><span class='duration'>0.30873s</span></dd>
+    <script type="text/javascript">moveProgressBar('49.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created BNV</span><span class='duration'>0.31611s</span></dd>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond whit diferent id for the BNV</span><span class='duration'>0.33265s</span></dd>
+  </dl>
+</div>
+<div id="div_group_27" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_27" class="passed">whit data saved and incorrect values</dt>
+    <script type="text/javascript">moveProgressBar('50.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.26669s</span></dd>
+    <script type="text/javascript">moveProgressBar('51.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 3</span><span class='duration'>0.31596s</span></dd>
+    <script type="text/javascript">moveProgressBar('51.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the errror explanation</span><span class='duration'>0.32673s</span></dd>
+    <script type="text/javascript">moveProgressBar('52.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond whit the same id for the BNV</span><span class='duration'>0.26465s</span></dd>
+  </dl>
+</div>
+<div id="div_group_28" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_28" class="passed">Api::V1::InfoAppUsersController</dt>
+  </dl>
+</div>
+<div id="div_group_29" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_29" class="passed">GET /api/v1/info_app_users</dt>
+  </dl>
+</div>
+<div id="div_group_30" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_30" class="passed">with no info</dt>
+    <script type="text/javascript">moveProgressBar('52.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :not_found (404)</span><span class='duration'>0.26618s</span></dd>
+    <script type="text/javascript">moveProgressBar('53.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the error</span><span class='duration'>0.23283s</span></dd>
+  </dl>
+</div>
+<div id="div_group_31" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_31" class="passed">with info and no diseases</dt>
+    <script type="text/javascript">moveProgressBar('54.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.35092s</span></dd>
+    <script type="text/javascript">moveProgressBar('54.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should return the user info</span><span class='duration'>0.25690s</span></dd>
+  </dl>
+</div>
+<div id="div_group_32" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_32" class="passed">whit info and deseases</dt>
+    <script type="text/javascript">moveProgressBar('55.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.41667s</span></dd>
+    <script type="text/javascript">moveProgressBar('55.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should return the user info</span><span class='duration'>0.35829s</span></dd>
+    <script type="text/javascript">moveProgressBar('56.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond whith the created diseases</span><span class='duration'>0.30800s</span></dd>
+  </dl>
+</div>
+<div id="div_group_33" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_33" class="passed">POST /api/v1/info_app_users</dt>
+  </dl>
+</div>
+<div id="div_group_34" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_34" class="passed">with valid params and no diseases</dt>
+    <script type="text/javascript">moveProgressBar('56.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.26648s</span></dd>
+    <script type="text/javascript">moveProgressBar('57.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.24977s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.25811s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created user info</span><span class='duration'>0.25846s</span></dd>
+  </dl>
+</div>
+<div id="div_group_35" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_35" class="passed">whith valid params and valid diseases</dt>
+    <script type="text/javascript">moveProgressBar('59.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.38319s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.30714s</span></dd>
+    <script type="text/javascript">moveProgressBar('60.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.29167s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created user info</span><span class='duration'>0.29084s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created diseases</span><span class='duration'>0.34219s</span></dd>
+  </dl>
+</div>
+<div id="div_group_36" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_36" class="passed">whit valid params and invalid diseases</dt>
+    <script type="text/javascript">moveProgressBar('62.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :partial_content (206)</span><span class='duration'>0.26601s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.29954s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.30052s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created user info</span><span class='duration'>0.29143s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should not respond with relations and explain the error</span><span class='duration'>0.26627s</span></dd>
+  </dl>
+</div>
+<div id="div_group_37" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_37" class="passed">with invalid params</dt>
+    <script type="text/javascript">moveProgressBar('65.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.24152s</span></dd>
+    <script type="text/javascript">moveProgressBar('65.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 0</span><span class='duration'>0.29104s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.30855s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with error</span><span class='duration'>0.24971s</span></dd>
+  </dl>
+</div>
+<div id="div_group_38" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_38" class="passed">POST-PUT/PATCH /api/v1/info_app_users</dt>
+  </dl>
+</div>
+<div id="div_group_39" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_39" class="passed">whith no diseases</dt>
+    <script type="text/javascript">moveProgressBar('67.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.26611s</span></dd>
+    <script type="text/javascript">moveProgressBar('68.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.27429s</span></dd>
+    <script type="text/javascript">moveProgressBar('68.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.26661s</span></dd>
+    <script type="text/javascript">moveProgressBar('69.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond whit the updated info</span><span class='duration'>0.25855s</span></dd>
+  </dl>
+</div>
+<div id="div_group_40" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_40" class="passed">whit new diseases</dt>
+    <script type="text/javascript">moveProgressBar('69.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.29908s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.29086s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.29986s</span></dd>
+    <script type="text/javascript">moveProgressBar('71.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the updated info</span><span class='duration'>0.44165s</span></dd>
+    <script type="text/javascript">moveProgressBar('72.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created diseases</span><span class='duration'>0.37387s</span></dd>
+  </dl>
+</div>
+<div id="div_group_41" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_41" class="passed">whit repeted diseases</dt>
+    <script type="text/javascript">moveProgressBar('72.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.36634s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.35006s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.35845s</span></dd>
+    <script type="text/javascript">moveProgressBar('74.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the updated info</span><span class='duration'>0.34096s</span></dd>
+    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created diseases</span><span class='duration'>0.34956s</span></dd>
+  </dl>
+</div>
+<div id="div_group_42" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_42" class="passed">whith incorrect diseases</dt>
+    <script type="text/javascript">moveProgressBar('75.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :partial_content (206)</span><span class='duration'>0.38276s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.31642s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.30018s</span></dd>
+    <script type="text/javascript">moveProgressBar('77.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the updated info</span><span class='duration'>0.31650s</span></dd>
+    <script type="text/javascript">moveProgressBar('77.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created diseases</span><span class='duration'>0.26663s</span></dd>
+    <script type="text/javascript">moveProgressBar('78.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respodn with the error message</span><span class='duration'>0.31688s</span></dd>
+  </dl>
+</div>
+<div id="div_group_43" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_43" class="passed">with incorrect diseases but created</dt>
+    <script type="text/javascript">moveProgressBar('79.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :partial_content (206)</span><span class='duration'>0.32434s</span></dd>
+    <script type="text/javascript">moveProgressBar('79.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.65853s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.31596s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the updated info</span><span class='duration'>0.35876s</span></dd>
+    <script type="text/javascript">moveProgressBar('81.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created diseases</span><span class='duration'>0.34145s</span></dd>
+    <script type="text/javascript">moveProgressBar('81.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respodn with the error message</span><span class='duration'>0.33610s</span></dd>
+  </dl>
+</div>
+<div id="div_group_44" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_44" class="passed">whith created diseases for delete</dt>
+    <script type="text/javascript">moveProgressBar('82.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :ok (200)</span><span class='duration'>0.30500s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.28374s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.27411s</span></dd>
+    <script type="text/javascript">moveProgressBar('84.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the updated info</span><span class='duration'>0.27505s</span></dd>
+    <script type="text/javascript">moveProgressBar('84.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with the created diseases</span><span class='duration'>0.33300s</span></dd>
+    <script type="text/javascript">moveProgressBar('85.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respodn with the error message</span><span class='duration'>0.33285s</span></dd>
+    <script type="text/javascript">moveProgressBar('86.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should change count by 0</span><span class='duration'>0.27532s</span></dd>
+  </dl>
+</div>
+<div id="div_group_45" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_45" class="passed">whith invalid params</dt>
+    <script type="text/javascript">moveProgressBar('86.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unprocessable_entity (422)</span><span class='duration'>0.24953s</span></dd>
+    <script type="text/javascript">moveProgressBar('87.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.24972s</span></dd>
+    <script type="text/javascript">moveProgressBar('87.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.24880s</span></dd>
+    <script type="text/javascript">moveProgressBar('88.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respodn with the error message</span><span class='duration'>0.25044s</span></dd>
+  </dl>
+</div>
+<div id="div_group_46" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_46" class="passed">with invalid diseases</dt>
+    <script type="text/javascript">moveProgressBar('88.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :partial_content (206)</span><span class='duration'>0.27302s</span></dd>
+    <script type="text/javascript">moveProgressBar('89.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">should eq 1</span><span class='duration'>0.30749s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.26653s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respodn with the error message</span><span class='duration'>0.27472s</span></dd>
+  </dl>
+</div>
+<div id="div_group_47" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_47" class="passed">Api::V1::ProductsController</dt>
+  </dl>
+</div>
+<div id="div_group_48" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_48" class="passed">GET /api/v1/products/:id</dt>
+  </dl>
+</div>
+<div id="div_group_49" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_49" class="passed">with valid code and token</dt>
+    <script type="text/javascript">moveProgressBar('91.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with numeric status code 200</span><span class='duration'>0.63194s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.54217s</span></dd>
+    <script type="text/javascript">moveProgressBar('92.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">expect to have a content</span><span class='duration'>0.43337s</span></dd>
+    <script type="text/javascript">moveProgressBar('93.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">expect to respond with the related nutrients</span><span class='duration'>0.40010s</span></dd>
+  </dl>
+</div>
+<div id="div_group_50" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_50" class="passed">with invalid code</dt>
+    <script type="text/javascript">moveProgressBar('93.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :not_found (404)</span><span class='duration'>0.56566s</span></dd>
+    <script type="text/javascript">moveProgressBar('94.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.56627s</span></dd>
+    <script type="text/javascript">moveProgressBar('94.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.59156s</span></dd>
+  </dl>
+</div>
+<div id="div_group_51" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_51" class="passed">with diferent token</dt>
+    <script type="text/javascript">moveProgressBar('95.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unauthorized (401)</span><span class='duration'>0.55815s</span></dd>
+    <script type="text/javascript">moveProgressBar('95.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.65770s</span></dd>
+    <script type="text/javascript">moveProgressBar('96.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.57467s</span></dd>
+  </dl>
+</div>
+<div id="div_group_52" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_52" class="passed">with invalid token</dt>
+    <script type="text/javascript">moveProgressBar('97.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unauthorized (401)</span><span class='duration'>0.57531s</span></dd>
+    <script type="text/javascript">moveProgressBar('97.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.57486s</span></dd>
+    <script type="text/javascript">moveProgressBar('98.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.59054s</span></dd>
+  </dl>
+</div>
+<div id="div_group_53" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_53" class="passed">with no user</dt>
+    <script type="text/javascript">moveProgressBar('98.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">should respond with status code :unauthorized (401)</span><span class='duration'>0.59845s</span></dd>
+    <script type="text/javascript">moveProgressBar('99.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">should include &quot;application/json&quot;</span><span class='duration'>0.59081s</span></dd>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">expect to have an error</span><span class='duration'>0.62465s</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>43.95685 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "172 examples, 0 failures";</script>
 </div>
 </div>
 </body>

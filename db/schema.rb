@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219171432) do
+ActiveRecord::Schema.define(version: 20161222230501) do
 
   create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 20161219171432) do
     t.datetime "updated_at",             null: false
     t.index ["nutrient_id"], name: "index_has_nutrients_on_nutrient_id", using: :btree
     t.index ["product_id"], name: "index_has_nutrients_on_product_id", using: :btree
+  end
+
+  create_table "has_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "product_id"
+    t.integer  "app_user_id"
+    t.float    "porciones",   limit: 24
+    t.float    "cantidad",    limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["app_user_id"], name: "index_has_products_on_app_user_id", using: :btree
+    t.index ["product_id"], name: "index_has_products_on_product_id", using: :btree
   end
 
   create_table "info_app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -158,6 +169,8 @@ ActiveRecord::Schema.define(version: 20161219171432) do
   add_foreign_key "has_diseases", "info_app_users"
   add_foreign_key "has_nutrients", "nutrients"
   add_foreign_key "has_nutrients", "products"
+  add_foreign_key "has_products", "app_users"
+  add_foreign_key "has_products", "products"
   add_foreign_key "info_app_users", "app_users"
   add_foreign_key "nutrients", "measures"
   add_foreign_key "portions", "measures"

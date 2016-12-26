@@ -17,6 +17,8 @@ class Product < ApplicationRecord
 	belongs_to :measure, required: true
 	belongs_to :user, required: true
 	has_one :portion, dependent: :destroy
+	has_many :has_product
+	has_many :app_users, through: :has_product
  
 	def get_nutrient(nutrient_id)
 		has = HasNutrient.where("product_id = ? AND nutrient_id = ?", self.id, nutrient_id).take
