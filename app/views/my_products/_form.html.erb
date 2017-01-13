@@ -35,7 +35,7 @@
 </div>
 
 <div class="input-field">
-	<%= f.select :measure, options_for_select( @measures.collect { |m| [ m.abrebiacion, m.id ] }, 1), :required => true%>
+	<%= f.select :measure, options_for_select( @measures.collect { |m| [ m.abreviacion, m.id ] }, 1), :required => true%>
 	<label>Medida del contenido</label>
 </div>
 
@@ -74,7 +74,7 @@
 		<%= u.text_field :cantidad, class: "numero_decimal" %>
 	</div>
 	<div class="input-field">
-		<%= u.select :measure, options_for_select( @measures.collect { |m| [ m.abrebiacion, m.id ] }, (@product.portion.present? ? "1" : @product.portion.measure.id) ), :required => true%>
+		<%= u.select :measure, options_for_select( @measures.collect { |m| [ m.abreviacion, m.id ] }, (@product.portion.present? ? "1" : @product.portion.measure.id) ), :required => true%>
 		<label>Medida de la porción</label>
 	</div>
 	<div class="input-field">

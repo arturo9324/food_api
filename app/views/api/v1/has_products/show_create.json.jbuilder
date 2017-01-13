@@ -1,0 +1,1 @@
+json.partial! "api/v1/resource", resource: @has, relations: ["eaten_nutrients"]

@@ -66,7 +66,7 @@ class UsersController < Devise::RegistrationsController
 	end
 
 	def create_user_params
-		params.require(:user).permit(:email,:password, :password_confirmation)
+		params.fetch(:user, {}).permit(:email,:password, :password_confirmation)
 	end
 
 	def set_user

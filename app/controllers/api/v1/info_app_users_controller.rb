@@ -119,7 +119,7 @@ class Api::V1::InfoAppUsersController < Api::V1::MasterApiController
 	end
 
 	def info_params
-		params.require(:info).permit(:fecha_nacimiento, :peso, :estatura, :sexo, :max_calorias, :min_calorias, :embarazo, :lactancia)
+		params.fetch(:info, {}).permit(:fecha_nacimiento, :peso, :estatura, :sexo, :max_calorias, :min_calorias, :embarazo, :lactancia)
 	end
 
 	def set_disease_params

@@ -96,11 +96,11 @@ class MyProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:nombre,:cantidad,:calorias,:codigo,:image)
+		params.fetch(:product, {}).permit(:nombre,:cantidad,:calorias,:codigo,:image)
 	end
 
 	def portion_params
-		params[:product].require(:portion).permit(:porcion, :cantidad, :equivalencia)
+		params[:product].fetch(:portion, {}).permit(:porcion, :cantidad, :equivalencia)
 	end
 
 	def set_measures

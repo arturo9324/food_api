@@ -1,11 +1,14 @@
 class EatenNutrient < ApplicationRecord
 	
 	belongs_to :nutrient, required: true
-	belongs_to :has_product, required: true
-	has_one :app_user, through: :has_product
+	belongs_to :has_product
 	validates_numericality_of :cantidad, presence: true, greater_than: 0.0 
 
-	scope :suma, ->{ select("nutrient_id, sum(cantidad) as cantidad").group("nutrient_id") }
+	scope :suma, -> { select("nutrient_id, sum(eaten_nutrients.cantidad) AS cantidad") }
 
-	scope :fecha, -> (fecha) { where("DATE(created_at) = ?", fecha)}
+	scope :grupo, -> { group("nutrient_id, eaten_nutrients.created_at") }
+
+	scope :fecha, -> (fecha) { having("DATE(eaten_nutrients.created_at) = ?", fecha) }
+
+	scope :hoy, -> { having("eaten_nutrients.created_at >= ?", Time.zone.now.beginning_of_day) }
 end

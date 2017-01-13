@@ -13,5 +13,6 @@ module FoodApi
     # -- all .rb files in that directory are automatically loaded.
     #config.i18n.load_path += Dir[Rails.root.join(‘config’, ‘locales’, ‘**’, ‘*.{rb,yml}’).to_s]
     config.i18n.default_locale = :es
+    config.time_zone = 'Mexico City'
   end
 end

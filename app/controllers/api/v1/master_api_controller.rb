@@ -29,4 +29,13 @@ class Api::V1::MasterApiController < ApplicationController
 			error!("No se ha iniciado sesión", :unauthorized)
 		end
 	end
+
+	def valid_date(date)
+		require 'date'
+		begin 
+			@date = Date.parse(date)
+		rescue
+			@date = nil
+		end
+	end
 end

@@ -2,8 +2,8 @@
 
 one:
   nombre: MyString
-  abrebiacion: MyString
+  abreviacion: MyString
 
 two:
   nombre: MyString
-  abrebiacion: MyString
+  abreviacion: MyString

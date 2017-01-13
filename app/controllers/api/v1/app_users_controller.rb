@@ -25,7 +25,7 @@ class Api::V1::AppUsersController < Api::V1::MasterApiController
 	private
 
 	def app_users_params
-		params.require(:auth).permit(:provider, :uid, :email, :name)
+		params.fetch(:auth, {}).permit(:provider, :uid, :email, :name)
 	end 
 
 end 

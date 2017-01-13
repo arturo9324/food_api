@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       resources :info_app_users, only: [:index, :create]
       resources :best_nutrient_values, only: [:index, :create], as: "values"
       resources :has_products, only: [:index, :create]
+      resources :eaten_nutrients, only: [:index]
+      resources :app_user_calories, only: [:index, :create], as: "calories"
   	end
   end
 

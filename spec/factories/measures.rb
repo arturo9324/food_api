@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :measure do
     nombre "gramos"
-    abrebiacion "gr"
+    abreviacion "gr"
   end
 end
