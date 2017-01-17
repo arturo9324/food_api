@@ -41,6 +41,8 @@ class MyProductsController < ApplicationController
 			@product.publish!
 			redirect_to @product
 		else
+			@product.build_portion
+			set_measures()
 			render :new
 		end
 	end

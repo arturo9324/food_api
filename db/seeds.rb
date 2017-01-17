@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create(email: "pdao113787@gmail.com", password: "12345678", password_confirmation: "12345678")
-measures = Measure.create([{nombre: "", abreviacion:}])
+measures = Measure.create([{nombre: "", abreviacion: ""}])

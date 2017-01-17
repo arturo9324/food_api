@@ -131,8 +131,8 @@ es:
       required: debe existir
       taken: ya está en uso
       improbable_phone: "debe ser válido"
-      invalid_date: "inválida, debes tener al menos 10 años"
-      before: "menor a 10 años."
+      invalid_date: "inválida, debes tener al menos 18 años"
+      before: "menor a 18 años."
       too_long:
         one: "es demasiado largo (1 carácter máximo)"
         other: "es demasiado largo (%{count} caracteres máximo)"

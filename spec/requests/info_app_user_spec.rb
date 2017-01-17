@@ -67,7 +67,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 		context "with valid params and no diseases" do
 			before :each do
 				@info_count = InfoAppUser.count
-				@info = {fecha_nacimiento: -11.years.from_now, peso: 40, estatura: 35, sexo: 0, max_calorias: 50, min_calorias: 30, embarazo: 0, lactancia: 1 }
+				@info = {fecha_nacimiento: -19.years.from_now, peso: 40, estatura: 35, sexo: 0, max_calorias: 50, min_calorias: 30, embarazo: 0, lactancia: 1 }
 				post api_v1_info_app_users_path, params: {info: @info, uid: @user.uid, provider: @user.provider, token: @token.token }
 			end
 
@@ -92,7 +92,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 					@diseases << dis.id 
 				end
 				@info_count = InfoAppUser.count
-				@info = {fecha_nacimiento: -11.years.from_now, peso: 40, estatura: 35, sexo: 0, max_calorias: 50, min_calorias: 30, embarazo: 0, lactancia: 1 }
+				@info = {fecha_nacimiento: -19.years.from_now, peso: 40, estatura: 35, sexo: 0, max_calorias: 50, min_calorias: 30, embarazo: 0, lactancia: 1 }
 				post api_v1_info_app_users_path, params: {info: @info, uid: @user.uid, provider: @user.provider, token: @token.token, diseases: @diseases }
 			end
 
@@ -123,7 +123,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 					@diseases << dis.id+1
 				end
 				@info_count = InfoAppUser.count
-				@info = {fecha_nacimiento: -11.years.from_now, peso: 40, estatura: 35, sexo: 0, max_calorias: 50, min_calorias: 30, embarazo: 0, lactancia: 1 }
+				@info = {fecha_nacimiento: -19.years.from_now, peso: 40, estatura: 35, sexo: 0, max_calorias: 50, min_calorias: 30, embarazo: 0, lactancia: 1 }
 				post api_v1_info_app_users_path, params: {info: @info, uid: @user.uid, provider: @user.provider, token: @token.token, diseases: @diseases }
 			end
 
@@ -149,7 +149,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 		context "with invalid params" do
 			before :each do
 				@info_count = InfoAppUser.count
-				@info = {fecha_nacimiento: -11.years.from_now, peso: 40, estatura: "nueva", sexo: 0, embarazo: 0, lactancia: 1 }
+				@info = {fecha_nacimiento: -19.years.from_now, peso: 40, estatura: "nueva", sexo: 0, embarazo: 0, lactancia: 1 }
 				post api_v1_info_app_users_path, params: {info: @info, uid: @user.uid, provider: @user.provider, token: @token.token }
 			end
 
