@@ -20,6 +20,7 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 
 			it "should respond with all the eaten products" do
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['data']).to_not be_empty
 			end
 		end
@@ -125,7 +126,7 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 
 			it "should respond with the created has_product and its relations" do
 				json = JSON.parse(response.body)
-				#pp json
+				pp json
 				expect(json['data']['attributes']).to_not be_empty
 				expect(json['data']['relations']).to_not be_empty
 			end 

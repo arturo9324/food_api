@@ -33,6 +33,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
 			it "expect to respond with the related nutrients" do
 				json =JSON.parse(response.body)
+				pp json
 				expect(json['data']['relations']).to_not be_empty
 			end
 		end

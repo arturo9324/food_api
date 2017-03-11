@@ -27,11 +27,11 @@ class Api::V1::BestNutrientValuesController < Api::V1::MasterApiController
 				@values.each do |v|
 					if v.has_key?(:"_#{id}")
 						exist = true
-						unless v[:"_#{n.id}"].has_key?(:optimo) || v[:"_#{n.id}"].has_key?(:maximo) || v[:"_#{n.id}"].has_key?(:minimo)
+						unless v[:"_#{n.id}"].has_key?(:value)
 							key = false
 							break
 						end
-						@req = @app_user.best_nutrient_values.new(v.require(:"_#{n.id}").permit(:optimo, :maximo, :minimo))
+						@req = @app_user.best_nutrient_values.new(v.require(:"_#{n.id}").permit(:value))
 						@req.nutrient = n
 						unless @req.valid?
 							valid = false

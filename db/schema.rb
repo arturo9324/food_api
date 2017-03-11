@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113170117) do
+ActiveRecord::Schema.define(version: 20170127165210) do
 
   create_table "app_user_calories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "app_user_id"
@@ -32,11 +32,9 @@ ActiveRecord::Schema.define(version: 20170113170117) do
   create_table "best_nutrient_values", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "app_user_id"
     t.integer  "nutrient_id"
-    t.float    "optimo",      limit: 24
-    t.float    "maximo",      limit: 24
-    t.float    "minimo",      limit: 24
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.float    "value",       limit: 24
     t.index ["app_user_id"], name: "index_best_nutrient_values_on_app_user_id", using: :btree
     t.index ["nutrient_id"], name: "index_best_nutrient_values_on_nutrient_id", using: :btree
   end

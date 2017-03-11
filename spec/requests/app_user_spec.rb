@@ -24,6 +24,7 @@ RSpec.describe Api::V1::AppUsersController, type: :request do
 
 			it "has to return the created token" do 
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['data']['token']).to_not be_empty
 			end
 

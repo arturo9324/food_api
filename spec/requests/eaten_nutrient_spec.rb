@@ -46,6 +46,7 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 
 			it "should respond with the grouped values for the nutrinets" do
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['data'].count).to eq(4)
 			end
 		end

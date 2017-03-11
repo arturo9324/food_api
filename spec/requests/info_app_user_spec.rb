@@ -31,6 +31,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 
 			it "should return the user info" do
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['data']['attributes']['fecha_nacimiento']).to eq(@info.fecha_nacimiento.to_s(:db))
 			end
 		end
@@ -48,6 +49,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 
 			it "should return the user info" do
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['data']['attributes']['fecha_nacimiento']).to eq(@info.fecha_nacimiento.to_s(:db))
 			end
 
@@ -149,7 +151,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 		context "with invalid params" do
 			before :each do
 				@info_count = InfoAppUser.count
-				@info = {fecha_nacimiento: -19.years.from_now, peso: 40, estatura: "nueva", sexo: 0, embarazo: 0, lactancia: 1 }
+				@info = {fecha_nacimiento: -10.years.from_now, peso: "Algo", estatura: "nueva", sexo: 0, embarazo: 0, lactancia: 1 }
 				post api_v1_info_app_users_path, params: {info: @info, uid: @user.uid, provider: @user.provider, token: @token.token }
 			end
 
@@ -161,6 +163,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 
 			it "should respond with error" do
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['errors']).to_not be_empty
 			end
 		end

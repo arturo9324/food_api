@@ -15,18 +15,23 @@ class Api::V1::MasterApiController < ApplicationController
 					@token = @app_user.tokens.last
 				else
 					error!("No se ha iniciado sesión", :unauthorized)
+					return
 				end
 				if params[:token] != @token.token
 					error!("El token es incorrecto", :unauthorized)
+					return
 				end
 				unless @token.is_valid?
 					error!("El token ha caducado", :unauthorized)
+					return
 				end
 			else
 				error!("El usuario no existe", :unauthorized)
+				return
 			end
 		else
 			error!("No se ha iniciado sesión", :unauthorized)
+			return
 		end
 	end
 

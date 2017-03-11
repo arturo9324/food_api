@@ -66,9 +66,10 @@ class HasNutrientsController < ApplicationController
 	end
 
 	 def set_product
-		if (Product.exists?(params[:id]))
-			if @c_user == Product.find(params[:id]).user
-				@product = Product.find(params[:id])
+	 	#raise params.to_yaml
+		if (Product.exists?(params[:product_id]))
+			if @c_user == Product.find(params[:product_id]).user
+				@product = Product.find(params[:product_id])
 			else
 				redirect_to products_path, alert: "No tienes permiso para acceder a este producto"
 			end

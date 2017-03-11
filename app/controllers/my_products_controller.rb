@@ -106,7 +106,8 @@ class MyProductsController < ApplicationController
 	end
 
 	def set_measures
-		@measures = Measure.all
+		@measures_product = Measure.productos
+		@measures_porcion = Measure.porcion
 	end
 
 	def set_measure_product

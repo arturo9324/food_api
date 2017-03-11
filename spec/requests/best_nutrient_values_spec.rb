@@ -21,6 +21,7 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 
 			it "should return the asked records" do
 				json = JSON.parse(response.body)
+				pp json
 				expect(json['data']['attributes']).to_not be_empty
 			end
 		end
@@ -52,7 +53,7 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 			before :each do
 				for i in 1..3
 					@nutrients = FactoryGirl.create(:nutrient, measure: @measure)
-					@attributes << {:"_#{@nutrients.id}" => {maximo: 5, minimo: 5, optimo: 5}}
+					@attributes << {:"_#{@nutrients.id}" => {value: 5}}
 				end
 				post api_v1_values_path, params: {best: @attributes, uid: @user.uid, provider: @user.provider, token: @token.token}
 			end
@@ -64,6 +65,7 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 			it "should respond with the created BNV" do
 				json = JSON.parse(response.body)
 				#pp @attributes.inspect
+				pp json
 				expect(json['data']['relations']['best_nutrient_values']).to_not be_empty
 			end
 		end
@@ -72,7 +74,7 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 			before :each do
 				for i in 1..3
 					@nutrients = FactoryGirl.create(:nutrient, measure: @measure)
-					@attributes << {:"_#{@nutrients.id}" => {maximo: -50, minimo: "akdndjs"}}
+					@attributes << {:"_#{@nutrients.id}" => {value: "akdndjs"}}
 				end
 				post api_v1_values_path, params: {best: @attributes, uid: @user.uid, provider: @user.provider, token: @token.token}
 			end
@@ -105,12 +107,12 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 			end
 		end
 
-		context "whith missed attributes" do
+		context "whith missed nutrients" do
 			before :each do
 				for i in 1..3
 					@nutrients = FactoryGirl.create(:nutrient, measure: @measure)
 					if i%2 ==0
-						@miss_attributes << {:"_#{@nutrients.id}" => {maximo: 5, minimo: 5, optimo: 5}}
+						@miss_attributes << {:"_#{@nutrients.id}" => {value: 5}}
 					end
 				end
 				post api_v1_values_path, params: {best: @miss_attributes, uid: @user.uid, provider: @user.provider, token: @token.token}
@@ -131,7 +133,7 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 				for i in 1..3
 					@nutrients = FactoryGirl.create(:nutrient, measure: @measure)
 					FactoryGirl.create(:best_nutrient_value, app_user: @user, nutrient: @nutrients)
-					@attributes << {:"_#{@nutrients.id}" => {maximo: 5, minimo: 5, optimo: 5}}
+					@attributes << {:"_#{@nutrients.id}" => {value: 5}}
 				end
 				@first_id = BestNutrientValue.first.id
 				post api_v1_values_path, params: {best: @attributes, uid: @user.uid, provider: @user.provider, token: @token.token}
@@ -157,7 +159,7 @@ RSpec.describe Api::V1::BestNutrientValuesController, type: :request do
 				for i in 1..3
 					@nutrients = FactoryGirl.create(:nutrient, measure: @measure)
 					FactoryGirl.create(:best_nutrient_value, app_user: @user, nutrient: @nutrients)
-					@attributes << {:"_#{@nutrients.id}" => {maximo: 5, optimo: 5}}
+					@attributes << {:"_#{@nutrients.id}" => {value: "ajsda"}}
 				end
 				@first_id = BestNutrientValue.first.id
 				post api_v1_values_path, params: {best: @attributes, uid: @user.uid, provider: @user.provider, token: @token.token}

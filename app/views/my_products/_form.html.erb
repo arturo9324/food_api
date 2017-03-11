@@ -35,14 +35,10 @@
 </div>
 
 <div class="input-field">
-	<%= f.select :measure, options_for_select( @measures.collect { |m| [ m.abreviacion, m.id ] }, 1), :required => true%>
+	<%= f.select :measure, options_for_select( @measures_product.collect { |m| [ m.abreviacion, m.id ] }, 1), :required => true%>
 	<label>Medida del contenido</label>
 </div>
 
-<div class="input-field">
-	<%= f.label :calorias, "Calorías Kcal/cal" %>
-	<%= f.text_field :calorias, :required => true, class: "numero_entero" %>
-</div>
 <div class="input-field">
 	<%= f.label :codigo, "Código de barras" %>
 	<%= f.text_field :codigo, :required => true, class: "numero_entero" %>
@@ -63,6 +59,11 @@
 </div>
 <% end %>
 
+<div class="input-field">
+	<%= f.label :calorias, "Calorías Kcal/cal (Por porcion)" %>
+	<%= f.text_field :calorias, :required => true, class: "numero_decimal" %>
+</div>
+
 <%= f.fields_for @product.portion do |u| %>
 <div class="group" id="porciones_num">
 	<div class="input-field">
@@ -70,11 +71,11 @@
 		<%= u.text_field :porcion, class: "numero_decimal" %>
 	</div>
 	<div class="input-field">
-		<%= u.label :cantidad, "Contenido de la porción" %>
+		<%= u.label :cantidad, "Contenido de la porción (Pieza, Porción, Medida casera, Envase)" %>
 		<%= u.text_field :cantidad, class: "numero_decimal" %>
 	</div>
 	<div class="input-field">
-		<%= u.select :measure, options_for_select( @measures.collect { |m| [ m.abreviacion, m.id ] }, (@product.portion.present? ? "1" : @product.portion.measure.id) ), :required => true%>
+		<%= u.select :measure, options_for_select( @measures_porcion.collect { |m| [ m.abreviacion, m.id ] }, (@product.portion.present? ? "1" : @product.portion.measure.id) ), :required => true%>
 		<label>Medida de la porción</label>
 	</div>
 	<div class="input-field">
