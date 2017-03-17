@@ -19,4 +19,8 @@ class AppUser < ApplicationRecord
 			user.name =data[:name]
 		end
 	end
+
+	def classname
+		"AppUser"
+	end
 end

@@ -18,4 +18,8 @@ class User < ApplicationRecord
     end
   end 
 
+  def classname
+    "User"
+  end
+
 end

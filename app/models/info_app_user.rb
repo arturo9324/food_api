@@ -12,5 +12,8 @@ class InfoAppUser < ApplicationRecord
 	validates_inclusion_of :embarazo, presence: true, :in => [true, false] 
 	validates_inclusion_of :lactancia, presence: true, :in => [true, false] 
 
+	def classname
+		"InfoAppUser"
+	end
 
 end

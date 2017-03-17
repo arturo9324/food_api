@@ -1,10 +1,10 @@
-json.type resource.class.name.underscore.pluralize
+json.type resource.classname.underscore.pluralize
 json.id resource.id
 json.attributes resource.attributes
-if resource.class.name.underscore.pluralize == "products"
+if resource.classname.underscore.pluralize == "products"
 	json.imageURL resource.image.url(:mobile)
 end
-if resource.class.name.underscore.pluralize == "app_users"
+if resource.classname.underscore.pluralize == "app_users"
 	json.token resource.tokens.last.token
 end
 if defined? relations

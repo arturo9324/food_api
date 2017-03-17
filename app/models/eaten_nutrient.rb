@@ -11,4 +11,8 @@ class EatenNutrient < ApplicationRecord
 	scope :fecha, -> (fecha) { having("DATE(eaten_nutrients.created_at) = ?", fecha) }
 
 	scope :hoy, -> { having("eaten_nutrients.created_at >= ?", Time.zone.now.beginning_of_day) }
+
+	def classname
+		"EatenNutrient"
+	end
 end

@@ -9,4 +9,8 @@ class Measure < ApplicationRecord
 	scope :nutrientes, -> { where("measures.id IN (?)", [5, 6, 7, 8])}
 
 	scope :porcion, -> { where("measures.id IN (?)", [2, 5])}
+
+	def classname
+		"Measure"
+	end
 end

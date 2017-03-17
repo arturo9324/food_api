@@ -39,4 +39,8 @@ class Product < ApplicationRecord
 			transitions from: :published, to: :on_hold
 		end
 	end
+
+	def classname
+		"Product"
+	end
 end

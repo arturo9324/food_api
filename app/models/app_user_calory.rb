@@ -11,4 +11,8 @@ class AppUserCalory < ApplicationRecord
 	scope :grupo, -> { group("app_user_calories.created_at") }
 
 	scope :suma, -> { select("SUM(gasto) AS gasto")}
+
+	def classname
+		"AppUserCalory"
+	end
 end 

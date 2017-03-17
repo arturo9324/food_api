@@ -11,4 +11,8 @@ class HasProduct < ApplicationRecord
 	scope :fecha, -> (fecha) { where("DATE(created_at) = ?", fecha) }
 
 	scope :hoy, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
+
+	def classname
+		"HasProduct"
+	end
 end

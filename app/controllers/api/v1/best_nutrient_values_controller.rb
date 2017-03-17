@@ -14,44 +14,21 @@ class Api::V1::BestNutrientValuesController < Api::V1::MasterApiController
 		@requests = []
 		if params.has_key?(:best)
 			@values = params[:best]
+			if @values.empty?
+				error!("No se enviaron los nutrientes", :unprocessable_entity)
+				return
+			end 
 			@nutrients = Nutrient.all
-			@nutrients.each do |n|
-				id = "#{n.id}"
-				exist = false
-				key = true
-				valid = true
-				if @values.empty?
-					error!("No se enviaron los nutrientes", :unprocessable_entity)
-					return
-				end 
-				@values.each do |v|
-					if v.has_key?(:"_#{id}")
-						exist = true
-						unless v[:"_#{n.id}"].has_key?(:value)
-							key = false
-							break
-						end
-						@req = @app_user.best_nutrient_values.new(v.require(:"_#{n.id}").permit(:value))
-						@req.nutrient = n
-						unless @req.valid?
-							valid = false
-							break
-						end 
-						break
-					end
-				end
-				unless exist
+			@nutrients.each do |n|				
+				if @values.has_key?(:"_#{n.id}") && @values[:"_#{n.id}"].has_key?(:value)
+					@req = @app_user.best_nutrient_values.new(@values.require(:"_#{n.id}").permit(:value))
+					@req.nutrient = n
+					unless @req.valid?
+						error_array!(@req.errors.full_messages, :unprocessable_entity)
+						return
+					end 
+				else
 					error!("No se enviaron todos los nutrientes", :unprocessable_entity)
-					return
-				end
-
-				unless key
-					error!("No se envio toda la información", :unprocessable_entity)
-					return
-				end
-
-				unless valid
-					error_array!(@req.errors.full_messages, :unprocessable_entity)
 					return
 				end
 				@requests << @req

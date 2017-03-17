@@ -6,4 +6,8 @@ class Nutrient < ApplicationRecord
 	belongs_to :measure, required: true
 	has_many :best_nutrient_values
 	has_many :eaten_nutrients
+
+	def classname
+		"Nutrient"
+	end
 end
