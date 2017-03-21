@@ -15,5 +15,6 @@ module FoodApi
     config.i18n.default_locale = :es
     config.time_zone = 'Mexico City'
     config.active_record.default_timezone = :local
+    config.serve_static_assets = true
   end
 end
