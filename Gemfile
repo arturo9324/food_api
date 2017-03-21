@@ -53,7 +53,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # Use mysql as the database for Active Record
-  gem 'mysql2', '>= 0.3.18', '< 0.5'
+  #gem 'mysql2', '>= 0.3.18', '< 0.5'
+  gem 'pg'
   gem 'letter_opener'
   gem 'minitest'
   gem 'shoulda-matchers', '~>2.5.0'
