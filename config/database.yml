@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: food_api_production
-  username: food_api
-  password: <%= ENV['FOOD_API_DATABASE_PASSWORD'] %>
+  database: ENV['DATABASE_URL']
+  username: ENV['CLEARDB_DATABASE_USERNAME']
+  password: ENV['CLEARDB_DATABASE_PASSWORDs']
