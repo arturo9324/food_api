@@ -1,1 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  poll: 5
+  username: arturo
+  password: root
+  host: localhost
+
+test:
+  <<: *default
+  database: food_api_test
+
+development:
+  <<: *default
+  database: food_api_development
+
+production:
+  <<: *default
+  database: ENV['DATABSE_URL']
+  username: ENV['DATABASE_USERNAME']
+  password: ENV['DATABASE_PASSWORD']
 

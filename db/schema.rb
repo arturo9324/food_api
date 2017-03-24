@@ -12,15 +12,18 @@
 
 ActiveRecord::Schema.define(version: 20170127165210) do
 
-  create_table "app_user_calories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "app_user_calories", force: :cascade do |t|
     t.integer  "app_user_id"
-    t.float    "gasto",       limit: 24
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.float    "gasto"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["app_user_id"], name: "index_app_user_calories_on_app_user_id", using: :btree
   end
 
-  create_table "app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "app_users", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
     t.string   "provider"
@@ -29,17 +32,17 @@ ActiveRecord::Schema.define(version: 20170127165210) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "best_nutrient_values", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "best_nutrient_values", force: :cascade do |t|
     t.integer  "app_user_id"
     t.integer  "nutrient_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.float    "value",       limit: 24
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.float    "value"
     t.index ["app_user_id"], name: "index_best_nutrient_values_on_app_user_id", using: :btree
     t.index ["nutrient_id"], name: "index_best_nutrient_values_on_nutrient_id", using: :btree
   end
 
-  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "companies", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "direccion"
     t.string   "telefono"
@@ -49,71 +52,75 @@ ActiveRecord::Schema.define(version: 20170127165210) do
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
-  create_table "diseases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "nombre"
+  create_table "diseases", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "eaten_nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "eaten_nutrients", force: :cascade do |t|
     t.integer  "nutrient_id"
     t.integer  "has_product_id"
-    t.float    "cantidad",       limit: 24
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.float    "cantidad"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["has_product_id"], name: "index_eaten_nutrients_on_has_product_id", using: :btree
     t.index ["nutrient_id"], name: "index_eaten_nutrients_on_nutrient_id", using: :btree
   end
 
-  create_table "has_diseases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer "disease_id"
-    t.integer "info_app_user_id"
+  create_table "has_diseases", force: :cascade do |t|
+    t.integer  "disease_id"
+    t.integer  "info_app_user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["disease_id"], name: "index_has_diseases_on_disease_id", using: :btree
     t.index ["info_app_user_id"], name: "index_has_diseases_on_info_app_user_id", using: :btree
   end
 
-  create_table "has_nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "has_nutrients", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "nutrient_id"
-    t.float    "cantidad",    limit: 24
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.float    "cantidad"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["nutrient_id"], name: "index_has_nutrients_on_nutrient_id", using: :btree
     t.index ["product_id"], name: "index_has_nutrients_on_product_id", using: :btree
   end
 
-  create_table "has_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "has_products", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "app_user_id"
-    t.float    "porciones",   limit: 24
-    t.float    "cantidad",    limit: 24
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.float    "porciones"
+    t.float    "cantidad"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["app_user_id"], name: "index_has_products_on_app_user_id", using: :btree
     t.index ["product_id"], name: "index_has_products_on_product_id", using: :btree
   end
 
-  create_table "info_app_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "info_app_users", force: :cascade do |t|
     t.integer  "app_user_id"
     t.date     "fecha_nacimiento"
-    t.float    "peso",             limit: 24
-    t.float    "estatura",         limit: 24
-    t.boolean  "sexo",                        default: true
-    t.float    "max_calorias",     limit: 24
-    t.float    "min_calorias",     limit: 24
-    t.boolean  "embarazo",                    default: false
-    t.boolean  "lactancia",                   default: false
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.float    "peso"
+    t.float    "estatura"
+    t.boolean  "sexo",             default: true
+    t.float    "max_calorias"
+    t.float    "min_calorias"
+    t.boolean  "embarazo",         default: false
+    t.boolean  "lactancia",        default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["app_user_id"], name: "index_info_app_users_on_app_user_id", using: :btree
   end
 
-  create_table "measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "measures", force: :cascade do |t|
     t.string   "nombre"
     t.string   "abreviacion"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "nutrients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "nutrients", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -121,37 +128,37 @@ ActiveRecord::Schema.define(version: 20170127165210) do
     t.index ["measure_id"], name: "index_nutrients_on_measure_id", using: :btree
   end
 
-  create_table "portions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "portions", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "measure_id"
-    t.float    "porcion",      limit: 24
-    t.float    "cantidad",     limit: 24
+    t.float    "porcion"
+    t.float    "cantidad"
     t.string   "equivalencia"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["measure_id"], name: "index_portions_on_measure_id", using: :btree
     t.index ["product_id"], name: "index_portions_on_product_id", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "nombre"
-    t.float    "cantidad",           limit: 24
+    t.float    "cantidad"
     t.integer  "calorias"
     t.string   "codigo"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.integer  "measure_id"
-    t.string   "state",                         default: "on_hold"
+    t.string   "state",              default: "on_hold"
     t.index ["measure_id"], name: "index_products_on_measure_id", using: :btree
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
-  create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "tokens", force: :cascade do |t|
     t.datetime "expires_at"
     t.integer  "app_user_id"
     t.string   "token"
@@ -160,7 +167,7 @@ ActiveRecord::Schema.define(version: 20170127165210) do
     t.index ["app_user_id"], name: "index_tokens_on_app_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
