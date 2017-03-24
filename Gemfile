@@ -33,6 +33,7 @@ gem 'rails-controller-testing'
 
 gem 'rspec', '~>3.0'
 gem 'foundation-icons-sass-rails', '~> 3.0'
+gem 'pg'
 
 gem 'valid_email'
 gem 'materialize-sass'
@@ -66,10 +67,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
-end
-
-group :production do 
-  gem 'pg'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
