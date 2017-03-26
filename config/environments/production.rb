@@ -44,6 +44,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
      :address              => "smtp.gmail.com",
      :port                 => 587,
+     :domain               => 'https://food-api-app.herokuapp.com/:80',
      :user_name            => ENV['gmail_username'],
      :password             => ENV['gmail_password'],
      :authentication       => "plain",
