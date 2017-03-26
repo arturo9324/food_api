@@ -39,16 +39,18 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.default_url_options = { host: "food-api-app.herokuapp.com", port: 443 }
 
   config.action_mailer.smtp_settings = {
-     :address              => "smtp.gmail.com",
-     :port                 => 587,
-     :domain               => 'https://food-api-app.herokuapp.com/:80',
-     :user_name            => ENV['email'],
-     :password             => ENV['email_password'],
-     :authentication       => "plain",
-     :enable_starttls_auto => true
+     address: "smtp.gmail.com",
+     port: 587,
+     domain: 'food-api-app.herokuapp.com:80',
+     ser_name: ENV['email'],
+     password: ENV['email_password'],
+     authentication: "plain",
+     enable_starttls_auto: true
   }
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
