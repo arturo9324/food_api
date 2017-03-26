@@ -47,7 +47,7 @@ Rails.application.configure do
      address: "smtp.gmail.com",
      port: 587,
      domain: 'food-api-app.herokuapp.com:80',
-     ser_name: ENV['email'],
+     user_name: ENV['email'],
      password: ENV['email_password'],
      authentication: "plain",
      enable_starttls_auto: true
