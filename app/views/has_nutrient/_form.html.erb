@@ -21,7 +21,7 @@
 				<%= check_box_tag "nutrients[identifiers][]", nutrient.id, false, id: "nutrients_#{nutrient.id}", checked: has_nutrient %>
 				<% if nutrient.measure.id == 7 %>
 					<% case nutrient.id %>
-						<% when 2, 7 %>
+						<% when 2, 9 %>
 							<%= label_tag "nutrients_#{nutrient.id}", "#{nutrient.nombre}. - #{nutrient.measure.nombre} - (#{nutrient.measure.abreviacion} gr * 4)" %>
 						<% else %>
 							<%= label_tag "nutrients_#{nutrient.id}", "#{nutrient.nombre}. - #{nutrient.measure.nombre} - (#{nutrient.measure.abreviacion} gr * 9)" %>
