@@ -31,7 +31,6 @@ class Api::V1::HasProductsController < Api::V1::MasterApiController
 		@has = @app_user.has_products.new(has_products_params)
 		@has.product = @product
 		if @has.save
-			i = 0
 			@nutrient_values.each do |n|
 				n.has_product = @has
 				unless n.save
@@ -75,7 +74,7 @@ class Api::V1::HasProductsController < Api::V1::MasterApiController
 	end
 
 	def has_products_params
-		params.fetch(:has, {}).permit(:porciones, :cantidad)
+		params.fetch(:has, {}).permit(:porciones, :cantidad, :calories)
 	end
 
 	def set_relations

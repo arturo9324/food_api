@@ -7,6 +7,7 @@ class HasProduct < ApplicationRecord
 
 	validates_numericality_of :porciones, presence: true, greater_than: 0.0
 	validates_numericality_of :cantidad, presence: true, greater_than: 0.0
+	validates_numericality_of :calories, presence: true, greater_than: 0.0
 
 	scope :fecha, -> (fecha) { where("DATE(created_at) = ?", fecha) }
 
