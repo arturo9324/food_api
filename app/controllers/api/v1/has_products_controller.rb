@@ -7,7 +7,7 @@ class Api::V1::HasProductsController < Api::V1::MasterApiController
 		if params.has_key?(:fecha)
 			valid_date(params[:fecha].to_s)
 			if @date.nil?
-				error!("Envia una fecha valida", :not_found)
+				error!("Envia una fecha valida", :unprocessable_entity)
 				return
 			else
 				if @date <= Date.today and @date >= Date.parse(MIN_DATE)
@@ -21,7 +21,7 @@ class Api::V1::HasProductsController < Api::V1::MasterApiController
 			@has = @app_user.has_products.hoy
 		end
 		if @has.empty? or @has.nil?
-			error_array!(["No se encontraron productos"], :partial_content)
+			error_array!(["No se encontraron productos"], :not_found)
 			return
 		end
 		render "/api/v1/has_products/show"

@@ -5,7 +5,7 @@ class Api::V1::AppUserCaloriesController < Api::V1::MasterApiController
 		if params.has_key?(:fecha)
 			valid_date(params[:fecha].to_s)
 			if @date.nil?
-				error!("Envia una fecha valida", :not_found)
+				error!("Envia una fecha valida", :unprocessable_entity)
 				return
 			end 
 			if @date <= Date.today and @date >= Date.parse(MIN_DATE)
