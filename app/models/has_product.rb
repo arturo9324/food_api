@@ -2,6 +2,7 @@ class HasProduct < ApplicationRecord
 	
 	belongs_to :product, required: true
 	belongs_to :app_user, required: true
+	belongs_to :measure, required: true
 	has_many :eaten_nutrients
 	delegate :eaten_nutrients, to: :app_user
 

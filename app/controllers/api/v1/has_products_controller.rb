@@ -30,6 +30,7 @@ class Api::V1::HasProductsController < Api::V1::MasterApiController
 	def create
 		@has = @app_user.has_products.new(has_products_params)
 		@has.product = @product
+		@has.measure = @product.portion.measure
 		if @has.save
 			@nutrient_values.each do |n|
 				n.has_product = @has

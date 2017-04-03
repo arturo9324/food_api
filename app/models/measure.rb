@@ -1,6 +1,7 @@
 class Measure < ApplicationRecord
 	has_many :products
 	has_many :nutrients
+	has_many :has_product
 	validates :nombre, presence: true
 	validates :abreviacion, presence: true
 
