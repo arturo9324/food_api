@@ -8,7 +8,7 @@ class Api::V1::AppUserCaloriesController < Api::V1::MasterApiController
 				error!("Envia una fecha valida", :unprocessable_entity)
 				return
 			end 
-			if @date <= Date.today and @date >= Date.parse(MIN_DATE)
+			if @date <= Date.today and @date >= Date.parse("2017-05-04")
 				@calories = @app_user.app_user_calories.suma.grupo.fecha(@date)
 			else
 				error!("Envia una fecha valida", :unprocessable_entity)
@@ -36,6 +36,6 @@ class Api::V1::AppUserCaloriesController < Api::V1::MasterApiController
 
 	private
 	def app_user_calories_params
-		params.fetch(:calories, {}).permit(:gasto)
+		params.fetch(:calories, {}).permit(:gasto, :fecha)
 	end
 end
