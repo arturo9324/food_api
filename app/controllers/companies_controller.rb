@@ -17,7 +17,7 @@ class CompaniesController < ApplicationController
 	def create
 		@company = @c_user.build_company(company_params)
 		if @company.save
-			rendirect_to root_path, notice: "Infomración actualizada correctamente"
+			redirect_to root_path, notice: "Infomración actualizada correctamente"
 		else
 			render :new
 		end
