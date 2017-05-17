@@ -24,7 +24,11 @@ class CompaniesController < ApplicationController
 	end
 
 	def update
-		redirect_to root_path, notice: "no se ha actuializado"
+		if @company.update(company_params)
+			redirect_to root_path, notice: "Se ha actulizado tu información"
+		else
+			render :edit
+		end
 	end
 
 	
