@@ -31,7 +31,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 
 			it "should return the user info" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']['attributes']['fecha_nacimiento']).to eq(@info.fecha_nacimiento.to_s(:db))
 			end
 		end
@@ -49,7 +49,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 
 			it "should return the user info" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']['attributes']['fecha_nacimiento']).to eq(@info.fecha_nacimiento.to_s(:db))
 			end
 
@@ -163,7 +163,7 @@ RSpec.describe Api::V1::InfoAppUsersController, type: :request do
 
 			it "should respond with error" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['errors']).to_not be_empty
 			end
 		end

@@ -33,7 +33,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
 			it "expect to respond with the related nutrients" do
 				json =JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']['relations']).to_not be_empty
 			end
 		end
@@ -70,7 +70,11 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
 		context "with invalid token" do
 			before :each do
-				@token = FactoryGirl.create(:token, app_user: @user, expires_at: -1.second.from_now)
+				@token = FactoryGirl.create(:token, app_user: @user, expires_at: -1.month.from_now)
+				@token.expires_at = -1.month.from_now
+				@token.save
+				#pp @token
+				#pp @token.is_valid?
 				get "/api/v1/products/#{@product.codigo}", params: { uid: @user.uid, provider: @user.provider, token: @token.token }
 			end
 

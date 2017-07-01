@@ -20,7 +20,7 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 
 			it "should respond with all the eaten products" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']).to_not be_empty
 			end
 		end
@@ -51,7 +51,7 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 				get api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "kasjhgsagdfvsgdv" }
 			end
 
-			it { expect(response).to have_http_status(:not_found) }
+			it { expect(response).to have_http_status(:unprocessable_entity) }
 
 			it "should respond with all the eaten products" do
 				json = JSON.parse(response.body)
@@ -93,7 +93,7 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 				get api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token}
 			end
 
-			it { expect(response).to have_http_status(:partial_content) }
+			it { expect(response).to have_http_status(:not_found) }
 
 			it "should respond with all the eaten products" do
 				json = JSON.parse(response.body)
@@ -113,11 +113,12 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 		context "with all valid" do
 			before :each do
 				@product = FactoryGirl.create(:product)
+				FactoryGirl.create(:portion, product: @product)
 				@nutrient1 = FactoryGirl.create(:nutrient)
 				@nutrient2 = FactoryGirl.create(:nutrient)
 				FactoryGirl.create(:has_nutrient, product: @product, nutrient: @nutrient1)
 				FactoryGirl.create(:has_nutrient, product: @product, nutrient: @nutrient2)
-				@values = { porciones: 1.2, cantidad: 1.2, product: @product.codigo }
+				@values = { calories: 15, porciones: 1.2, cantidad: 1.2, product: @product.codigo }
 				@nutrients = { :"_#{@nutrient1.id}" => 0.3 , :"_#{@nutrient2.id}" => 0.8 }
 				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: @nutrients } 
 			end
@@ -126,7 +127,7 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 
 			it "should respond with the created has_product and its relations" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']['attributes']).to_not be_empty
 				expect(json['data']['relations']).to_not be_empty
 			end 
@@ -141,11 +142,12 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 		context "with invalid attributes" do
 			before :each do
 				@product = FactoryGirl.create(:product)
+				FactoryGirl.create(:portion, product: @product)
 				@nutrient1 = FactoryGirl.create(:has_nutrient, product: @product)
 				@nutrient2 = FactoryGirl.create(:has_nutrient, product: @product)
-				@values = { porciones: "asasa",  product: @product.codigo }
+				@values = { calories: 15, porciones: "asasa",  product: @product.codigo }
 				@nutrients = { :"_#{@nutrient1.id}" => 0.3 , :"_#{@nutrient2.id}" => 0.8 }
-				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: @nutrients } 
+				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: @nutrients  } 
 			end
 
 			it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -159,8 +161,9 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 		context "with no nutrients created" do
 			before :each do
 				@product = FactoryGirl.create(:product)
-				@values = { porciones: 1.2, cantidad: 1.2,  product: @product.codigo }
-				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: {} } 
+				FactoryGirl.create(:portion, product: @product)
+				@values = { calories: 15, porciones: 1.2, cantidad: 1.2,  product: @product.codigo }
+				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: {}  } 
 			end
 
 			it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -175,10 +178,11 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 		context "with missed nutrients" do
 			before :each do
 				@product = FactoryGirl.create(:product)
+				FactoryGirl.create(:portion, product: @product)
 				@nutrient1 = FactoryGirl.create(:has_nutrient, product: @product)
 				@nutrient2 = FactoryGirl.create(:has_nutrient, product: @product)
-				@values = { porciones: 1.2, cantidad: 1.2,  product: @product.codigo }
-				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: {} } 
+				@values = { calories: 15, porciones: 1.2, cantidad: 1.2,  product: @product.codigo }
+				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values, nutrients: {}  } 
 			end
 
 			it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -192,10 +196,11 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 		context "with no nutrient key" do
 			before :each do
 				@product = FactoryGirl.create(:product)
+				FactoryGirl.create(:portion, product: @product)
 				@nutrient1 = FactoryGirl.create(:has_nutrient, product: @product)
 				@nutrient2 = FactoryGirl.create(:has_nutrient, product: @product)
-				@values = { porciones: 1.2, cantidad: 1.2,  product: @product.codigo }
-				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values } 
+				@values = { calories: 15, porciones: 1.2, cantidad: 1.2,  product: @product.codigo }
+				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values  } 
 			end
 
 			it { expect(response).to have_http_status(:unprocessable_entity) }
@@ -209,10 +214,11 @@ RSpec.describe Api::V1::HasProductsController, type: :request do
 		context "with invlaid product code" do
 			before :each do
 				@product = FactoryGirl.create(:product)
+				FactoryGirl.create(:portion, product: @product)
 				@nutrient1 = FactoryGirl.create(:has_nutrient, product: @product)
 				@nutrient2 = FactoryGirl.create(:has_nutrient, product: @product)
-				@values = { porciones: 1.2, cantidad: 1.2,  product: 122}
-				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values } 
+				@values = { calories: 15, porciones: 1.2, cantidad: 1.2,  product: 122}
+				post api_v1_has_products_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, has: @values  } 
 			end
 
 			it { expect(response).to have_http_status(:not_found) }

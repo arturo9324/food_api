@@ -10,7 +10,7 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 
 		context "with valid record" do
 			before :each do
-				@calories = { gasto: "6.0"}
+				@calories = { gasto: "6.0", fecha: DateTime.now.to_date }
 				post api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, calories: @calories }
 			end
 
@@ -18,7 +18,7 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 
 			it "should respond with the created record" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']['attributes']).to_not be_empty
 			end
 		end
@@ -65,7 +65,7 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 
 			it "should respnd with the sum of calories" do 
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data']).to_not be_empty
 			end
 		end
@@ -75,13 +75,13 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 				@calory1 = FactoryGirl.create(:app_user_calory, app_user: @user)
 				@calory2 = FactoryGirl.create(:app_user_calory, app_user: @user, gasto: 20)
 				@calory3 = FactoryGirl.create(:app_user_calory, app_user: @user, gasto: 15)
-				@calory1.created_at = "2016-12-28 00:00:00"
-				@calory2.created_at = "2016-12-28 00:00:00"
-				@calory3.created_at = "2016-12-28 00:00:00"
+				@calory1.fecha = "2017/05/04 00:00:00"
+				@calory2.fecha = "2017/05/04 00:00:00"
+				@calory3.fecha = "2017/05/04 00:00:00"
 				@calory1.save
 				@calory2.save
 				@calory3.save
-				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "2016-12-28" }
+				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "2017/05/04" }
 			end
 
 			it { expect(response).to have_http_status(:ok) }
@@ -95,7 +95,7 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 
 		context "with  no records created and valid date" do
 			before :each do
-				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "2016-12-28" }
+				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "2017/05/04" }
 			end
 
 			it { expect(response).to have_http_status(:not_found) }
@@ -121,10 +121,10 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 
 		context "with invalid date" do
 			before :each do
-				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "2016-13-40" }
+				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "2016/04/10" }
 			end
 
-			it { expect(response).to have_http_status(:not_found) }
+			it { expect(response).to have_http_status(:unprocessable_entity) }
 
 			it "should respnd with the sum of calories" do 
 				json = JSON.parse(response.body)
@@ -137,7 +137,7 @@ RSpec.describe Api::V1::AppUserCaloriesController, type: :request do
 				get api_v1_calories_path, params: { uid: @user.uid, provider: @user.provider, token: @token.token, fecha: "asdsfsdfsdfsg" }
 			end
 
-			it { expect(response).to have_http_status(:not_found) }
+			it { expect(response).to have_http_status(:unprocessable_entity) }
 
 			it "should respnd with the sum of calories" do 
 				json = JSON.parse(response.body)

@@ -19,8 +19,8 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 				@nutrient4 = FactoryGirl.create(:nutrient, measure: @measure)
 				@product1 = FactoryGirl.create(:product, measure: @measure, user: @user)
 				@product2 = FactoryGirl.create(:product, nombre: "segundo", codigo: "5555555555", measure: @measure, user: @user)
-				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user)
-				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user)
+				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user, measure: @measure)
+				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user, measure: @measure)
 				@eaten_nutrient1 = FactoryGirl.create(:eaten_nutrient, has_product: @has_product1, nutrient: @nutrient1)
 				@eaten_nutrient2 = FactoryGirl.create(:eaten_nutrient, has_product: @has_product1, nutrient: @nutrient2)
 				@eaten_nutrient3 = FactoryGirl.create(:eaten_nutrient, has_product: @has_product1, nutrient: @nutrient3)
@@ -46,7 +46,7 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 
 			it "should respond with the grouped values for the nutrinets" do
 				json = JSON.parse(response.body)
-				pp json
+				#pp json
 				expect(json['data'].count).to eq(4)
 			end
 		end
@@ -59,8 +59,8 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 				@nutrient4 = FactoryGirl.create(:nutrient, measure: @measure)
 				@product1 = FactoryGirl.create(:product, measure: @measure, user: @user)
 				@product2 = FactoryGirl.create(:product, nombre: "segundo", codigo: "5555555555", measure: @measure, user: @user)
-				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user)
-				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user)
+				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user, measure: @measure)
+				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user, measure: @measure)
 				FactoryGirl.create(:eaten_nutrient, has_product: @has_product1, nutrient: @nutrient1)
 				FactoryGirl.create(:eaten_nutrient, has_product: @has_product1, nutrient: @nutrient2)
 				FactoryGirl.create(:eaten_nutrient, has_product: @has_product1, nutrient: @nutrient3)
@@ -86,12 +86,12 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 				@nutrient4 = FactoryGirl.create(:nutrient, measure: @measure)
 				@product1 = FactoryGirl.create(:product, measure: @measure, user: @user)
 				@product2 = FactoryGirl.create(:product, nombre: "segundo", codigo: "5555555555", measure: @measure, user: @user)
-				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user)
-				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user)
+				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user, measure: @measure)
+				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user, measure: @measure)
 				get api_v1_eaten_nutrients_path, params: { uid: @app_user.uid, provider: @app_user.provider, token: @token.token}
 			end
 
-			it { expect(response).to have_http_status(:partial_content) }
+			it { expect(response).to have_http_status(:not_found) }
 
 			it "should respond with the grouped values for the nutrinets" do
 				json = JSON.parse(response.body)
@@ -107,8 +107,8 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 				@nutrient4 = FactoryGirl.create(:nutrient, measure: @measure)
 				@product1 = FactoryGirl.create(:product, measure: @measure, user: @user)
 				@product2 = FactoryGirl.create(:product, nombre: "segundo", codigo: "5555555555", measure: @measure, user: @user)
-				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user)
-				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user)
+				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user, measure: @measure)
+				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user, measure: @measure)
 				get api_v1_eaten_nutrients_path, params: { uid: @app_user.uid, provider: @app_user.provider, token: @token.token, fecha: "2015-12-02"}
 			end
 
@@ -128,12 +128,12 @@ RSpec.describe Api::V1::EatenNutrientsController, type: :request do
 				@nutrient4 = FactoryGirl.create(:nutrient, measure: @measure)
 				@product1 = FactoryGirl.create(:product, measure: @measure, user: @user)
 				@product2 = FactoryGirl.create(:product, nombre: "segundo", codigo: "5555555555", measure: @measure, user: @user)
-				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user)
-				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user)
+				@has_product1 = FactoryGirl.create(:has_product, product: @product1, app_user: @app_user, measure: @measure)
+				@has_product2 = FactoryGirl.create(:has_product, product: @product2, app_user: @app_user, measure: @measure)
 				get api_v1_eaten_nutrients_path, params: { uid: @app_user.uid, provider: @app_user.provider, token: @token.token, fecha: "2sadsad"}
 			end
 
-			it { expect(response).to have_http_status(:not_found) }
+			it { expect(response).to have_http_status(:unprocessable_entity) }
 
 			it "should respond with the grouped values for the nutrinets" do
 				json = JSON.parse(response.body)
